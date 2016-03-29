@@ -1,0 +1,34 @@
+{
+  "name": "fabmo.js",
+  "version": "0.0.4",
+  "description": "Javascript library for writing FabMo apps.",
+  "main": "fabmo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabMo/fabmo.js.git"
+  },
+  "keywords": [
+    "cnc",
+    "fabmo",
+    "apps"
+  ],
+  "author": "Ryan Sturmer",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/FabMo/fabmo.js/issues"
+  },
+  "homepage": "https://github.com/FabMo/fabmo.js#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.7.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-release": "^0.13.0",
+    "grunt-string-replace": "^1.2.1",
+    "minifier": "^0.7.1",
+    "uglify": "^0.1.5",
+    "yuidocjs": "^0.10.0"
+  }
+}

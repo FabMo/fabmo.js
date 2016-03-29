@@ -1,0 +1,8 @@
+node_modules
+*~
+*.tmp
+*.swp
+*.swo
+*.bak
+.DS_Store
+dist
