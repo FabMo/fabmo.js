@@ -604,6 +604,7 @@ FabMoDashboard.prototype.manualStop = function() {
 
 /**
  * Get the list of all the installed apps.
+ * @method getApps
  * @param {function} callback
  * @param {Error} callback.err Error object if there was an error.
  * @param {Object} callback.apps List of app objects representing all installed apps.
@@ -696,10 +697,26 @@ FabMoDashboard.prototype.disableWifiHotspot = function(callback) {
 	this._call("disableWifiHotspot", null, callback);
 }
 
+/**
+ * Get a list of all the macros installed on the tool.
+ * 
+ * @method getMacros
+ * @param callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.macros List of macro objects currently installed.
+ */
 FabMoDashboard.prototype.getMacros = function(callback) {
 	this._call("getMacros", null, callback);
 }
 
+/**
+ * Run the specified macro immediately.  Macro does not appear in the job history.
+ * 
+ * @method runMacro
+ * @param {Number} id The id of the macro to run.
+ * @param callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.runMacro = function(id, callback) {
 	this._call("runMacro", id, callback);
 }
@@ -708,6 +725,54 @@ FabMoDashboard.prototype.updateMacro = function(id, macro, callback) {
 	this._call("updateMacro", {'id':id, 'macro':macro}, callback);
 }
 
+"state": "idle",
+"posx": -2.39,
+"posy": 2.043,
+"posz": 0,
+"in1": 0,
+"in2": 0,
+"in3": 1,
+"in4": 0,
+"in5": 0,
+"in6": 0,
+"in7": 0,
+"in8": 0,
+"job": null,
+"unit": "in",
+"line": 0,
+"nb_lines": null,
+"auth": false,
+"current_file": null
+/**
+ * Request a status report from the system.  The status object is returned in the callback to this function, as well as posted
+ * with the status event.  To recieve updates to system status as it changes, you should bind a handler to the status event,
+ * and _not_ poll using `requestStatus`.
+ * 
+ * @method requestStatus
+ * @param {function} callback
+ * @param {Object} callback.status The status report object
+ * @param {String} callback.status.state The system state, one of `idle`,`running`,`paused`,`stopped`,`manual` or `dead`
+ * @param {Number} callback.status.posx The current x-axis position
+ * @param {Number} callback.status.posy The current y-axis position
+ * @param {Number} callback.status.posz The current z-axis position
+ * @param {Number} callback.status.posa The current a-axis position
+ * @param {Number} callback.status.posb The current b-axis position
+ * @param {Number} callback.status.posc The current c-axis position
+ * @param {Number} callback.status.in1 The current state of input 1 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 2 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 3 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 4 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 5 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 6 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 7 (`0` or `1`)
+ * @param {Number} callback.status.in1 The current state of input 8 (`0` or `1`)
+ * @param {String} callback.status.unit The current tool units (either `in` or `mm`)
+ * @param {Number} callback.status.line The line number in the currently running file (if a file is running)
+ * @param {Number} callback.status.nb_lines The total number of lines in the currently running file (if a file is running)
+ * @param {boolean} callback.status.auth True if the tool is currently authorized for movement
+ * @param {Object} callback.status.current_file Object describing the currently running file (or null if not running a file)
+ * @param {Object} callback.status.job Object describing the currently running job (or null if not running a job) 
+ */
 FabMoDashboard.prototype.requestStatus = function(callback) {
 	this._call("requestStatus", null, callback);
 }
@@ -716,20 +781,58 @@ FabMoDashboard.prototype.deleteMacro = function(id, callback) {
 	this._call("deleteMacro", id, callback);
 }
 
+/**
+ * Get the configuration object for the currently running app.  The configuration object is a JSON object 
+ * of no specific description that is saved with each app.  It can be used to store app-specific configuration data.
+ *
+ * @method getAppConfig
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.config Configuration object or {} if no configuration has been saved in the app.
+ */
 FabMoDashboard.prototype.getAppConfig = function(callback) {
 	this._call("getAppConfig", null, callback);
 }
 
+/**
+ * Set the app configuration to the provided option.
+ *
+ * @method setAppConfig
+ * @param {Object} config The configuration object to set.
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.config Configuration object or {} if no configuration has been saved in the app.
+ */
+FabMoDashboard.prototype.setAppConfig = function(config, callback) {
+	this._call("setAppConfig", config, callback);
+}
+
+/**
+ * Get the current FabMo version
+ * 
+ * @method getVersion
+ * @param {fuction} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.version Object describing the fabmo software version.
+ * @param {String} callback.version.hash The git hash of the currently running FabMo software
+ * @param {String} callback.version.number The user-friendly release version number (or empty string if not a released version
+ * @param {boolean} callback.version.debug True if FabMo is running in "debug mode"
+ * @param {String} callback.version.type The type of FabMo software build.  `dev` for development or `release` for released build.
+ */
 FabMoDashboard.prototype.getVersion = function(callback) {
 	this._call("getVersion", null, callback);
 }
 
+/**
+ * Control top level navigation for the dashboard.  Usually this is used to open another browser/tab window with a link from within an app,
+ * or more rarely, to navigate away from the dashboard.
+ * @method navigate
+ * @param {String} url The URL to open
+ * @param {Object} options Options for top-level navigation.
+ * @param {String} options.target The link target (same as the target argument of `window.open`)
+ */
 FabMoDashboard.prototype.navigate = function(url, options, callback) {
 	this._call("navigate", {'url' : url, 'options' : options || {}}, callback);
-}
-
-FabMoDashboard.prototype.setAppConfig = function(config, callback) {
-	this._call("setAppConfig", config, callback);
 }
 
 var toaster = function () {

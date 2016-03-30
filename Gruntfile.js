@@ -56,7 +56,32 @@ module.exports = function(grunt) {
     }
   },
 
-  bumpup: 'package.json'
+  bumpup: 'package.json',
+  
+  yuidoc: {
+    compile: {
+      name: '<%= pkg.name %>',
+      description: '<%= pkg.description %>',
+      version: '<%= pkg.version %>',
+      url: '<%= pkg.homepage %>',
+      options: {
+        "paths": ".",
+        "outdir": "dist/apidocs",
+        "ignorepaths" : ["dist","node_modules"],
+        "themedir" : "node_modules/yuidoc-lucid-theme",
+        "helpers" : ["node_modules/yuidoc-lucid-theme/helpers/helpers.js"],
+        "linkNatives" : true
+      }
+    }
+  },
+
+  'gh-pages': {
+      options: {
+        base: 'dist/apidocs'
+      },
+      src: ['**']
+    },
+
 });
 
   // Load the plugin that provides the "uglify" task.
@@ -64,6 +89,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-string-replace');
   grunt.loadNpmTasks('grunt-github-releaser');
   grunt.loadNpmTasks('grunt-bumpup');
+  grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
   // Default task(s).
   grunt.registerTask('default', ['release']);
@@ -86,6 +113,10 @@ grunt.registerTask('check-github-auth', 'Check that a github username/password',
       grunt.fail.fatal('Release version must be one of major/minor/patch');
     }
     grunt.task.run(['bumpup:' + arg, 'string-replace', 'uglify', 'github-release']);
+  });
+
+  grunt.registerTask('doc', 'Generate documentation', function() {
+    grunt.task.run(['yuidoc']);
   });
 
 };
