@@ -39,56 +39,53 @@ module.exports = function(grunt) {
     }
   },
 
-  release: {
+  'github-release': {
     options: {
-      bump: true, //default: true
-      //changelog: false, //default: false
-      //changelogText: '<%= version %>\n', //default: '### <%= version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n'
-      file: 'package.json', //default: package.json
-      add: false, //default: true
-      commit: false, //default: true
-      tag: false, //default: true
-      push: false, //default: true
-      pushTags: false, //default: true
-      npm: false, //default: true
-      npmtag: true, //default: no tag
-      indentation: '  ', //default: '  ' (two spaces)
-      folder: 'folder/to/publish/to/npm', //default project root
-      tagName: 'v<%= version %>', //default: '<%= version %>'
-      commitMessage: 'Release v<%= version %>', //default: 'release <%= version %>'
-      tagMessage: 'Tagging version v<%= version %>', //default: 'Version <%= version %>',
-      beforeBump: [], // optional grunt tasks to run before file versions are bumped
-      afterBump: ['build'], // optional grunt tasks to run after file versions are bumped
-      beforeRelease: [], // optional grunt tasks to run after release version is bumped up but before release is packaged
-      afterRelease: [], // optional grunt tasks to run after release is packaged
-      updateVars: [], // optional grunt config objects to update (this will update/set the version property on the object specified)
-      github: {
-        //apiRoot: 'https://git.example.com/v3', // Default: https://github.com
-        repo: 'FabMo/fabmo.js',                 //put your user/repo here
-        accessTokenVar: 'GITHUB_ACCESS_TOKEN',  //ENVIRONMENT VARIABLE that contains GitHub Access Token
+      repository: 'FabMo/fabmo.js', // Path to repository
+      auth: {
+        user : process.env.GITHUB_USERNAME,
+        password : process.env.GITHUB_PASSWORD
+      },
+      release: {
+        tag_name: 'v' + grunt.file.readJSON('package.json').version,
+        body : 'Release version ' + grunt.file.readJSON('package.json').version
       }
+    },
+    files: {
+      src: ['dist/fabmo.js', 'dist/fabmo.min.js']
     }
-  }
-  });
+  },
 
-
+  bumpup: 'package.json'
+});
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-string-replace');
-  grunt.loadNpmTasks('grunt-release');
+  grunt.loadNpmTasks('grunt-github-releaser');
+  grunt.loadNpmTasks('grunt-bumpup');
 
   // Default task(s).
   grunt.registerTask('default', ['release']);
-
-  grunt.registerTask('build', 'Perform the build', function() {
-    grunt.task.run(['string-replace', 'uglify']);
-  });
 
   grunt.registerTask('check-github-token', 'Check that a github access token has been defined.', function() {
     if(!process.env.GITHUB_ACCESS_TOKEN) {
       grunt.fail.fatal('No github access token is defined.  The GITHUB_ACCESS_TOKEN environment variable should be set to a valid access token.');
     }
+  });
+
+grunt.registerTask('check-github-auth', 'Check that a github username/password', function() {
+    if(!process.env.GITHUB_USERNAME || !process.env.GITHUB_PASSWORD) {
+      grunt.fail.fatal('No github access credentials are defined.  You must set the GITHUB_USERNAME and GITHUB_PASSOWRD environment variables to push a release.');
+    }
+  });
+
+  grunt.registerTask('release', 'Perform a release', function() {
+    var arg = this.args[0] || 'patch';
+    if(arg != 'major' && arg != 'minor' && arg != 'patch') {
+      grunt.fail.fatal('Release version must be one of major/minor/patch');
+    }
+    grunt.task.run(['bumpup:' + arg, 'string-replace', 'uglify', 'github-release']);
   });
 
 };

@@ -1,0 +1,13 @@
+{
+    "name": "fabmo.js",
+    "description": "The Foo API: a library for doing X, Y, and Z",
+    "version": "1.2.1",
+    "url": "http://fabmo.github.io/fabmo.js/",
+    "options": {
+        "outdir": "dist/apidocs",
+        "ignorepaths" : ["dist","node_modules"],
+        "themedir" : "node_modules/yuidoc-lucid-theme",
+		"helpers" : ["node_modules/yuidoc-lucid-theme/helpers/helpers.js"],
+		"linkNatives" : true
+    }
+}

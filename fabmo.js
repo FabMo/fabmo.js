@@ -1,3 +1,6 @@
+/**
+ * @module fabmo.js
+ */
 (function (root, factory) {
    var body = document.getElementsByTagName('body');
     if (typeof define === 'function' && define.amd) {
@@ -12,6 +15,11 @@
     }
 }(this, function () {
 
+/**
+ * The top-level object representing the dashboard.
+ * 
+ * @class FabMoDashboard
+ */
 var FabMoDashboard = function() {
     this.version = '{{FABMO_VERSION}}';
 	this.target = window.parent;
@@ -35,6 +43,10 @@ var FabMoDashboard = function() {
     }.bind(this);
 }
 
+/**
+ * @method isPresent
+ * @return {boolean} True if running in the actual FabMo dashboard.  False otherwise.
+ */
 FabMoDashboard.prototype.isPresent = function() {
     try {
         return window.self !== window.top;
@@ -210,6 +222,13 @@ FabMoDashboard.prototype._on = function(name, callback) {
 	this.target.postMessage(message, '*');
 }
 
+/**
+ * Bind a callback to the specified event.
+ * 
+ * @method on
+ * @param {String} name Event name
+ * @param {function} callback Event handler
+ */
 FabMoDashboard.prototype.on = function(name, callback) {
 	this._on(name, callback);
 }
@@ -246,42 +265,78 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 	}.bind(this));
 }
 
-// App Functions
+/**
+ * If this app was invoked from another app, get the arguments (if any) that were passed on invocation.
+ *
+ * @method getAppArgs
+ * @callback {Object} The arguments passed to this app, or undefined.
+ */ 
 FabMoDashboard.prototype.getAppArgs = function(callback) {
 	this._call("getAppArgs", null, callback);
 }
 
+/**
+ * Get the information for this app.
+ *
+ * @method getAppInfo
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.info App information
+ * @param {String} callback.info.name The name of the App
+ */
 FabMoDashboard.prototype.getAppInfo = function(callback) {
 	this._call("getAppInfo", null, callback);
 }
 
+/**
+ * Launch the specified app by app ID, with optional arguments.
+ * 
+ * @method launchApp
+ * @param {String} id The id of the app to launch.
+ * @param {Object} args Arguments object to pass to the app.
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error
+ * @param {Object} callback.app App info for the launched app if launch was successful
+ */
 FabMoDashboard.prototype.launchApp = function(id, args, callback) {
 	this._call("launchApp", {'id': id, 'args':args}, callback);
 }
 
-// DRO Functions
+/**
+ * Show the DRO (Digital ReadOut) in the dashboard if it is not already shown.
+ *
+ * @method showDRO
+ * @param {function} callback Called once the DRO has been displayed.
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.showDRO = function(callback) {
 	this._call("showDRO", null, callback);
 }
 
+/**
+ * Hide the DRO (Digital ReadOut) in the dashboard if it is not already hidden.
+ *
+ * @method hideDRO
+ * @param {function} callback Called once the DRO has been hidden.
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.hideDRO = function(callback) {
 	this._call("hideDRO", null, callback);
 }
 
-// Footer Functions
-FabMoDashboard.prototype.showFooter = function(callback) {
-	this._call("showFooter", null, callback);
+/**
+ * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, 
+ * but the dashboard reserves the right to format or even suppress these messages as suits its needs.
+ *
+ * @method notify
+ * @param {String} type Type of message, which can be one of `info`,`warn`,`error`, or `success`
+ * @param {String} message The text to be displayed in the notification.
+ * @param {function} callback Called once the message has been displayed
+ * @param {Error} callback.err Error object if there was an error.
+ */
+FabMoDashboard.prototype.notify = function(type, message, callback) {
+	this._call("notify", {'type':type, 'message':message}, callback);
 }
-
-FabMoDashboard.prototype.hideFooter = function(callback) {
-	this._call("hideFooter", null, callback);
-}
-
-// Notification functions
-FabMoDashboard.prototype.notification = function(type,message,callback) {
-	this._call("notification", {'type':type,'message':message}, callback);
-}
-FabMoDashboard.prototype.notify = FabMoDashboard.prototype.notification;
 
 function _makeFile(obj) {
 	if(obj instanceof jQuery) {
@@ -330,13 +385,13 @@ function _makeJob(obj) {
 		return job;
 	}
 }
-/*
- * Job Submission
- * @param jobs: array containing job objects
- * @param options: sumission options (applies to all jobs)
- * job object must have a 'file' member that's either a string or a file or a blob
+
+/**
+ * Submit one or more jobs to the dashboard.
+ * @param {Array|Object|jQuery} jobs A single job object, an array containing multiple job objects, or a jQuery object that points to a file type form input, or a form containing a file type input.
+ * @param {Object} [options] Options for job submission
+ * @todo Finish documenting this function
  */
-// Job and Queue Functions
 FabMoDashboard.prototype.submitJob = function(jobs, options, callback) {
 	var args = {jobs : []};
 
@@ -372,67 +427,191 @@ FabMoDashboard.prototype.submitJob = function(jobs, options, callback) {
 	this._call("submitJob", args, callback)
 }
 
+/**
+ * Resubmit a job by its ID.  Resubmitted jobs come in at the back of the job queue.
+ * 
+ * @method resubmitJob
+ * @param {Number} id The ID of the job to resubmit
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.resubmitJob = function(id, callback) {
 	this._call("resubmitJob", id, callback)
 }
 
+/**
+ * Cancel a job that is pending.
+ * 
+ * @method cancelJob
+ * @param {Number} id The ID of the job to cancel
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.cancelJob = function(id, callback) {
 	this._call("cancelJob", id, callback)
 }
 
+/**
+ * Get information about a job.  This works for jobs that are pending, currently running, or in the history.
+ * 
+ * @method getJobInfo
+ * @param {Number} id The ID of the job to cancel
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.job Information about the requested job.
+ * @param {String} callback.job.name Job name
+ * @param {String} callback.job.description Job description
+ * @param {Number} callback.job.created_at Job creation time (UTC datetime)
+ * @param {Number} callback.job.started_at Job start time (UTC datetime)
+ * @param {Number} callback.job.finished_at Job completion time (UTC datetime)
+ * @param {String} callback.job.state Current state of the job.  One of `pending`,`running`,`finished`,`cancelled` or `failed`
+ */
 FabMoDashboard.prototype.getJobInfo = function(id, callback) {
 	this._call("getJobInfo", id, callback)
 }
 
+/**
+ * Get a list of jobs that are currently pending and running.
+ * 
+ * @method getJobsInQueue
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.jobs Object containing both the pending and running jobs
+ * @param {Array} callback.jobs.pending List of pending jobs.  May be empty.
+ * @param {Array} callback.jobs.running List of running jobs.  May be empty.
+ */
 FabMoDashboard.prototype.getJobsInQueue = function(callback) {
 	this._call("getJobsInQueue",null, callback);
 }
 
+/**
+ * Remove all pending jobs from the queue.
+ * 
+ * @method clearJobQueue
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.clearJobQueue = function(callback) {
 	this._call("clearJobQueue",null, callback);
 }
 
+/**
+ * Get a list of jobs in the history.
+ * 
+ * @method getJobHistory
+ * @param {Object} options
+ * @param {Number} options.start The location in the results to start
+ * @param {Number} options.count The number of jobs to return
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object[]} callback.jobs Array of jobs in the history
+ */
 FabMoDashboard.prototype.getJobHistory = function(options, callback) {
 	this._call("getJobHistory",options, callback);
 }
 
+/**
+ * Run the next job in the job queue.
+ * 
+ * @method runNext
+ * @param {Object} options
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.runNext = function(callback) {
 	this._call("runNext",null, callback);
 }
 
-// Direct Control Functions
+/**
+ * Pause the execution of the current job or operation.  Operation can be resumed.
+ * 
+ * @method pause
+ * @param {Object} options
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.pause = function(callback) {
 	this._call("pause",null, callback);
 }
 
+/**
+ * Stop execution of the current job or operation.  Operation cannot be resumed.
+ * 
+ * @method stop
+ * @param {Object} options
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.stop = function(callback) {
 	this._call("stop",null, callback);
 }
 
+/**
+ * Resume the current operation of the system is paused.
+ * 
+ * @method resume
+ * @param {Object} options
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.resume = function(callback) {
 	this._call("resume",null, callback);
 }
 
-// Manual Drive Functions
+/**
+ * Perform a fixed manual move in a single axis.  (Sometimes called a nudge)
+ * 
+ * @method manualMoveFixed
+ * @param {String} axis One of `x`,`y`,`z`,`a`,`b`,`c`
+ * @param {Number} speed Speed in current tool units
+ * @param {distance} distance The distance to move in current units
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.manualMoveFixed = function(axis, speed, distance, callback) {
 	this._call("manualMoveFixed",{"axis":axis, "speed": speed, "dist":distance}, callback);
 }
 
+/**
+ * Start performing a manual move of the specified axis at the specified speed.
+ * 
+ * @method manualStart
+ * @param {Number} axis One of `x`,`y`,`z`,`a`,`b`,`c`
+ * @param {Number} speed Speed in current tool units.  Negative to move in the negative direction.
+ */
 FabMoDashboard.prototype.manualStart = function(axis, speed) {
 	this._call("manualStart",{"axis":axis, "speed":speed}, callback);
 }
 
+/**
+ * Send a "heartbeat" to the system, authorizing continued manual movement.  Manual moves must be continually
+ * refreshed with this heartbeat function, or the tool will stop moving.
+ * 
+ * @method manualHeartbeat
+ */
 FabMoDashboard.prototype.manualHeartbeat = function() {
 	this._call("manualHeartbeat",{}, callback);
 }
 
+/**
+ * Stop the tool immediately.
+ * 
+ * @method manualStop
+ */
 FabMoDashboard.prototype.manualStop = function() {
 	this._call("manualStop",{}, callback);
 }
 
+/**
+ * Get the list of all the installed apps.
+ * @param {function} callback
+ * @param {Error} callback.err Error object if there was an error.
+ * @param {Object} callback.apps List of app objects representing all installed apps.
+ */
 FabMoDashboard.prototype.getApps = function(callback) {
 	this._call("getApps",null,callback);
 }
+
 
 FabMoDashboard.prototype.submitApp = function(apps, options, callback) {
 	var args = {apps : []};
@@ -531,10 +710,6 @@ FabMoDashboard.prototype.updateMacro = function(id, macro, callback) {
 
 FabMoDashboard.prototype.requestStatus = function(callback) {
 	this._call("requestStatus", null, callback);
-}
-
-FabMoDashboard.prototype.notify = function(type, message, callback) {
-	this._call("notify", {'type':type, 'message':message}, callback);
 }
 
 FabMoDashboard.prototype.deleteMacro = function(id, callback) {
