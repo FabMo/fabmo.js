@@ -56,3 +56,7 @@ ul {
 	border-color: #56BA4A;
 	color: white;
 }
+
+.download-button:visited {
+	color: white;
+}
