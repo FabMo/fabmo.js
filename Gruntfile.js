@@ -41,7 +41,7 @@ grunt.initConfig({
     options: {
       replacements: [{
         pattern: /{{FABMO_VERSION}}/g,
-        replacement: 'v<%= pkg.version %>'
+        replacement: 'v' + grunt.file.readJSON('package.json').version
       }]
     }
   },
@@ -69,7 +69,7 @@ grunt.initConfig({
     compile: {
       name: '<%= pkg.name %>',
       description: '<%= pkg.description %>',
-      version: '<%= pkg.version %>',
+      version: 'v' + grunt.file.readJSON('package.json').version,
       url: '<%= pkg.homepage %>',
       options: {
         "paths": ".",
@@ -108,7 +108,7 @@ grunt.initConfig({
   gitcommit: {
         task: {
             options: {
-                message: '<%= pkg.name %> v<%= pkg.version %>',
+                message: '<%= pkg.name %> v' + grunt.file.readJSON('package.json').version,
                 noVerify: true,
                 noStatus: false
             },
