@@ -85,29 +85,29 @@ module.exports = function(grunt) {
       docs: {
         expand: true,
         src: 'doc/*',
-        dest: 'dist/doc',
+        dest: 'dist/',
       },
     }
 });
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-string-replace');
-  grunt.loadNpmTasks('grunt-github-releaser');
-  grunt.loadNpmTasks('grunt-bumpup');
-  grunt.loadNpmTasks('grunt-gh-pages');
-  grunt.loadNpmTasks('grunt-contrib-yuidoc');
-  grunt.loadNpmTasks('grunt-contrib-copy');
+// Load the plugin that provides the "uglify" task.
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-string-replace');
+grunt.loadNpmTasks('grunt-github-releaser');
+grunt.loadNpmTasks('grunt-bumpup');
+grunt.loadNpmTasks('grunt-gh-pages');
+grunt.loadNpmTasks('grunt-contrib-yuidoc');
+grunt.loadNpmTasks('grunt-contrib-copy');
 
 
-  // Default task(s).
-  grunt.registerTask('default', ['release']);
+// Default task(s).
+grunt.registerTask('default', ['release']);
 
-  grunt.registerTask('check-github-token', 'Check that a github access token has been defined.', function() {
-    if(!process.env.GITHUB_ACCESS_TOKEN) {
-      grunt.fail.fatal('No github access token is defined.  The GITHUB_ACCESS_TOKEN environment variable should be set to a valid access token.');
-    }
-  });
+grunt.registerTask('check-github-token', 'Check that a github access token has been defined.', function() {
+  if(!process.env.GITHUB_ACCESS_TOKEN) {
+    grunt.fail.fatal('No github access token is defined.  The GITHUB_ACCESS_TOKEN environment variable should be set to a valid access token.');
+  }
+});
 
 grunt.registerTask('check-github-auth', 'Check that a github username/password', function() {
     if(!process.env.GITHUB_USERNAME || !process.env.GITHUB_PASSWORD) {
