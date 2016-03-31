@@ -104,7 +104,19 @@ grunt.initConfig({
             tasks: ['availabletasks', 'default', 'check-github-auth', 'check-github-token']
         }
     }
-  }
+  },
+  gitcommit: {
+        task: {
+            options: {
+                message: '<%= pkg.name %> v<%= pkg.version %>',
+                noVerify: true,
+                noStatus: false
+            },
+            files: {
+                src: ['package.json']
+            }
+        }
+    },
 });
 
 // Load the plugin that provides the "uglify" task.
@@ -116,13 +128,14 @@ grunt.loadNpmTasks('grunt-gh-pages');
 grunt.loadNpmTasks('grunt-contrib-yuidoc');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-available-tasks');
+grunt.loadNpmTasks('grunt-git');
 
 grunt.registerTask('release', 'Perform a complete release, including documentation generation, tagging, and push to Github.', function() {
   if(this.args.length == 0) {
     grunt.fail.fatal('You must specify a release type to prepare a release:  grunt prepare:major|minor|patch');
   }
   arg = this.args[0];
-  grunt.task.run(['prepare:' + arg, 'push-release']);
+  grunt.task.run(['prepare:' + arg, 'gitcommit', 'push-release']);
 });
 
 grunt.registerTask('check-github-token', 'Check that a github access token has been defined.', function() {
