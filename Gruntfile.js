@@ -81,7 +81,13 @@ module.exports = function(grunt) {
       },
       src: ['**']
     },
-
+    copy: {
+      docs: {
+        expand: true,
+        src: 'doc/*',
+        dest: 'dist/doc',
+      },
+    }
 });
 
   // Load the plugin that provides the "uglify" task.
@@ -91,6 +97,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bumpup');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+
 
   // Default task(s).
   grunt.registerTask('default', ['release']);
@@ -116,7 +124,7 @@ grunt.registerTask('check-github-auth', 'Check that a github username/password',
   });
 
   grunt.registerTask('doc', 'Generate documentation', function() {
-    grunt.task.run(['yuidoc']);
+    grunt.task.run(['yuidoc', 'copy:docs']);
   });
 
   grunt.registerTask('doc-dist', 'Push documentation to web.', function() {
