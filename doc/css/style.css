@@ -16,6 +16,7 @@ pre code {
 }
 
 p {
+    font-size: 1.1em;
 	line-height: 1.5;
 }
 h4 {
@@ -23,7 +24,7 @@ h4 {
 }
 
 ul {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	line-height: 1.5;	
 }
 
