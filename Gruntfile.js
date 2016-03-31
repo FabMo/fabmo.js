@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
+// Project configuration.
+grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     uglify: {
@@ -29,13 +29,20 @@ module.exports = function(grunt) {
     version: {
       files: {
         'dist/fabmo.js' : 'fabmo.js',
-      },
-      options: {
-        replacements: [{
-          pattern: /{{FABMO_VERSION}}/g,
-          replacement: 'v<%= pkg.version %>'
-        }]
+        'dist/doc/index.html' : 'dist/doc/index.html'
       }
+    },
+
+    doc: {
+      files: {
+        'dist/doc/index.html' : 'dist/doc/index.html'
+      }
+    },
+    options: {
+      replacements: [{
+        pattern: /{{FABMO_VERSION}}/g,
+        replacement: 'v<%= pkg.version %>'
+      }]
     }
   },
 
@@ -81,13 +88,23 @@ module.exports = function(grunt) {
       },
       src: ['**']
     },
-    copy: {
-      docs: {
+  copy: {
+      doc: {
         expand: true,
-        src: 'doc/*',
+        src: 'doc/**',
         dest: 'dist/',
       },
+    },
+
+  'availabletasks' : {
+    'tasks' : {
+        options: {
+            showTasks: ['user'],
+            filter: 'exclude',
+            tasks: ['availabletasks', 'default', 'check-github-auth', 'check-github-token']
+        }
     }
+  }
 });
 
 // Load the plugin that provides the "uglify" task.
@@ -98,10 +115,15 @@ grunt.loadNpmTasks('grunt-bumpup');
 grunt.loadNpmTasks('grunt-gh-pages');
 grunt.loadNpmTasks('grunt-contrib-yuidoc');
 grunt.loadNpmTasks('grunt-contrib-copy');
+grunt.loadNpmTasks('grunt-available-tasks');
 
-
-// Default task(s).
-grunt.registerTask('default', ['release']);
+grunt.registerTask('release', 'Perform a complete release, including documentation generation, tagging, and push to Github.', function() {
+  if(this.args.length == 0) {
+    grunt.fail.fatal('You must specify a release type to prepare a release:  grunt prepare:major|minor|patch');
+  }
+  arg = this.args[0];
+  grunt.task.run(['prepare:' + arg, 'push-release']);
+});
 
 grunt.registerTask('check-github-token', 'Check that a github access token has been defined.', function() {
   if(!process.env.GITHUB_ACCESS_TOKEN) {
@@ -109,26 +131,39 @@ grunt.registerTask('check-github-token', 'Check that a github access token has b
   }
 });
 
-grunt.registerTask('check-github-auth', 'Check that a github username/password', function() {
-    if(!process.env.GITHUB_USERNAME || !process.env.GITHUB_PASSWORD) {
-      grunt.fail.fatal('No github access credentials are defined.  You must set the GITHUB_USERNAME and GITHUB_PASSOWRD environment variables to push a release.');
-    }
-  });
+grunt.registerTask('check-github-auth', 'Check that a github username/password has been specified', function() {
+  if(!process.env.GITHUB_USERNAME || !process.env.GITHUB_PASSWORD) {
+    grunt.fail.fatal('No github access credentials are defined.  You must set the GITHUB_USERNAME and GITHUB_PASSOWRD environment variables to push a release.');
+  }
+});
 
-  grunt.registerTask('release', 'Perform a release', function() {
-    var arg = this.args[0] || 'patch';
-    if(arg != 'major' && arg != 'minor' && arg != 'patch') {
-      grunt.fail.fatal('Release version must be one of major/minor/patch');
-    }
-    grunt.task.run(['bumpup:' + arg, 'string-replace', 'uglify', 'github-release']);
-  });
+grunt.registerTask('prepare', 'Prepare a release.  (Do not tag or push to Github)', function() {
+  if(this.args.length == 0) {
+    grunt.fail.fatal('You must specify a release type to prepare a release:  grunt prepare:major|minor|patch');
+  }
+  arg = this.args[0];
+  if(arg != 'major' && arg != 'minor' && arg != 'patch') {
+    grunt.fail.fatal('Release version must be one of major/minor/patch');
+  }
+  // Bump the rev
+  grunt.task.run(['bumpup:' + arg, 'doc', 'string-replace', 'uglify']);
+});
 
-  grunt.registerTask('doc', 'Generate documentation', function() {
-    grunt.task.run(['yuidoc', 'copy:docs']);
-  });
+// Push 
+grunt.registerTask('push-release', 'Create a release and push to Github.', function() {
+  grunt.task.run(['check-github-auth','github-release','doc-dist']);
+});
 
-  grunt.registerTask('doc-dist', 'Push documentation to web.', function() {
-    grunt.task.run(['doc', 'gh-pages']);
-  });
+grunt.registerTask('doc', 'Generate documentation.', function() {
+  grunt.task.run(['yuidoc', 'copy:doc', 'string-replace:doc']);
+});
+
+grunt.registerTask('doc-dist', 'Push documentation to Github. (gh-pages)', function() {
+  grunt.task.requires(['doc']);
+  grunt.task.run(['gh-pages']);
+});
+
+// Default task(s).
+grunt.registerTask('default', 'availabletasks');
 
 };

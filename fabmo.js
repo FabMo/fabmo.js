@@ -725,24 +725,6 @@ FabMoDashboard.prototype.updateMacro = function(id, macro, callback) {
 	this._call("updateMacro", {'id':id, 'macro':macro}, callback);
 }
 
-"state": "idle",
-"posx": -2.39,
-"posy": 2.043,
-"posz": 0,
-"in1": 0,
-"in2": 0,
-"in3": 1,
-"in4": 0,
-"in5": 0,
-"in6": 0,
-"in7": 0,
-"in8": 0,
-"job": null,
-"unit": "in",
-"line": 0,
-"nb_lines": null,
-"auth": false,
-"current_file": null
 /**
  * Request a status report from the system.  The status object is returned in the callback to this function, as well as posted
  * with the status event.  To recieve updates to system status as it changes, you should bind a handler to the status event,

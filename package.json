@@ -1,6 +1,6 @@
 {
   "name": "fabmo.js",
-  "version": "0.0.9",
+  "version": "0.0.17",
   "description": "Javascript library for writing FabMo apps.",
   "main": "fabmo.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/FabMo/fabmo.js#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-available-tasks": "^0.6.1",
     "grunt-bumpup": "^0.6.3",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
