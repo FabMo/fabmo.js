@@ -21,7 +21,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.0.9</b>
+                    API Docs for Version: <b>0.0.15</b>
                 </p>
             </li>
         </div>
@@ -96,34 +96,64 @@
 			<strong>Methods</strong>
 			<ul>
 				<li><a href="#method-cancelJob"><span class="im">cancelJob</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-cancelJob"><span class="im">cancelJob</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-clearJobQueue"><span class="im">clearJobQueue</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-clearJobQueue"><span class="im">clearJobQueue</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getAppArgs"><span class="im">getAppArgs</span>()</a></li>
+				<li><a href="#method-getAppArgs"><span class="im">getAppArgs</span>()</a></li>
+				<li><a href="#method-getAppConfig"><span class="im">getAppConfig</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getAppConfig"><span class="im">getAppConfig</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getAppInfo"><span class="im">getAppInfo</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getAppInfo"><span class="im">getAppInfo</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getApps"><span class="im">getApps</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getApps"><span class="im">getApps</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getJobHistory"><span class="im">getJobHistory</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getJobHistory"><span class="im">getJobHistory</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getJobInfo"><span class="im">getJobInfo</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getJobInfo"><span class="im">getJobInfo</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getJobsInQueue"><span class="im">getJobsInQueue</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getJobsInQueue"><span class="im">getJobsInQueue</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getMacros"><span class="im">getMacros</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getMacros"><span class="im">getMacros</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-getVersion"><span class="im">getVersion</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-getVersion"><span class="im">getVersion</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-hideDRO"><span class="im">hideDRO</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-hideDRO"><span class="im">hideDRO</span>(<span class="ia">callback</span>)</a></li>
 				<li><a href="#method-isPresent"><span class="im">isPresent</span>()</a></li>
+				<li><a href="#method-isPresent"><span class="im">isPresent</span>()</a></li>
+				<li><a href="#method-launchApp"><span class="im">launchApp</span>(<span class="ia">id</span><span class="ia">args</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-launchApp"><span class="im">launchApp</span>(<span class="ia">id</span><span class="ia">args</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-manualHeartbeat"><span class="im">manualHeartbeat</span>()</a></li>
+				<li><a href="#method-manualHeartbeat"><span class="im">manualHeartbeat</span>()</a></li>
+				<li><a href="#method-manualMoveFixed"><span class="im">manualMoveFixed</span>(<span class="ia">axis</span><span class="ia">speed</span><span class="ia">distance</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-manualMoveFixed"><span class="im">manualMoveFixed</span>(<span class="ia">axis</span><span class="ia">speed</span><span class="ia">distance</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-manualStart"><span class="im">manualStart</span>(<span class="ia">axis</span><span class="ia">speed</span>)</a></li>
+				<li><a href="#method-manualStart"><span class="im">manualStart</span>(<span class="ia">axis</span><span class="ia">speed</span>)</a></li>
+				<li><a href="#method-manualStop"><span class="im">manualStop</span>()</a></li>
 				<li><a href="#method-manualStop"><span class="im">manualStop</span>()</a></li>
 				<li><a href="#method-navigate"><span class="im">navigate</span>(<span class="ia">url</span><span class="ia">options</span>)</a></li>
+				<li><a href="#method-navigate"><span class="im">navigate</span>(<span class="ia">url</span><span class="ia">options</span>)</a></li>
+				<li><a href="#method-notify"><span class="im">notify</span>(<span class="ia">type</span><span class="ia">message</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-notify"><span class="im">notify</span>(<span class="ia">type</span><span class="ia">message</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-on"><span class="im">on</span>(<span class="ia">name</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-on"><span class="im">on</span>(<span class="ia">name</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-pause"><span class="im">pause</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-pause"><span class="im">pause</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-requestStatus"><span class="im">requestStatus</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-requestStatus"><span class="im">requestStatus</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-resubmitJob"><span class="im">resubmitJob</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-resubmitJob"><span class="im">resubmitJob</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-resume"><span class="im">resume</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-resume"><span class="im">resume</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-runMacro"><span class="im">runMacro</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-runMacro"><span class="im">runMacro</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-runNext"><span class="im">runNext</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-runNext"><span class="im">runNext</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+				<li><a href="#method-setAppConfig"><span class="im">setAppConfig</span>(<span class="ia">config</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-setAppConfig"><span class="im">setAppConfig</span>(<span class="ia">config</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-showDRO"><span class="im">showDRO</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-showDRO"><span class="im">showDRO</span>(<span class="ia">callback</span>)</a></li>
+				<li><a href="#method-stop"><span class="im">stop</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
 				<li><a href="#method-stop"><span class="im">stop</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
 			</ul>
 		</li>
@@ -186,6 +216,132 @@
 </div>
 
 				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-cancelJob" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>cancelJob</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>id</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l442"><code>dist&#x2F;fabmo.js:442</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Cancel a job that is pending.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">id</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>The ID of the job to cancel</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-clearJobQueue" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>clearJobQueue</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l487"><code>dist&#x2F;fabmo.js:487</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Remove all pending jobs from the queue.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
 				<li class="param">
 						<code class="param-name">callback</code>
 						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
@@ -280,6 +436,34 @@
 	<div class="meta">
 				<p>
 				Defined in
+		<a href="../files/dist_fabmo.js.html#l268"><code>dist&#x2F;fabmo.js:268</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>If this app was invoked from another app, get the arguments (if any) that were passed on invocation.</p>
+</div>
+
+
+
+</div>
+<div id="method-getAppArgs" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getAppArgs</code></span>
+
+		<span class="paren">()</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
 		<a href="../files/fabmo.js.html#l268"><code>fabmo.js:268</code></a>
 		</p>
 
@@ -314,7 +498,7 @@
 	<div class="meta">
 				<p>
 				Defined in
-		<a href="../files/fabmo.js.html#l784"><code>fabmo.js:784</code></a>
+		<a href="../files/dist_fabmo.js.html#l766"><code>dist&#x2F;fabmo.js:766</code></a>
 		</p>
 
 
@@ -351,6 +535,145 @@ of no specific description that is saved with each app.  It can be used to store
 								<div class="param-description"><p>Configuration object or {} if no configuration has been saved in the app.</p>
 </div>
 
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getAppConfig" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getAppConfig</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/fabmo.js.html#l766"><code>fabmo.js:766</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get the configuration object for the currently running app.  The configuration object is a JSON object
+of no specific description that is saved with each app.  It can be used to store app-specific configuration data.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">config</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>Configuration object or {} if no configuration has been saved in the app.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getAppInfo" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getAppInfo</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l278"><code>dist&#x2F;fabmo.js:278</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get the information for this app.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">info</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>App information</p>
+</div>
+
+									<ul class="params-list">
+										<li class="param">
+												<code class="param-name">name</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The name of the App</div>
+										</li>
+									</ul>
 							</li>
 						</ul>
 				</li>
@@ -453,6 +776,71 @@ of no specific description that is saved with each app.  It can be used to store
 	<div class="meta">
 				<p>
 				Defined in
+		<a href="../files/dist_fabmo.js.html#l605"><code>dist&#x2F;fabmo.js:605</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get the list of all the installed apps.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">apps</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>List of app objects representing all installed apps.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getApps" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getApps</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
 		<a href="../files/fabmo.js.html#l605"><code>fabmo.js:605</code></a>
 		</p>
 
@@ -487,6 +875,99 @@ of no specific description that is saved with each app.  It can be used to store
 									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
 								<div class="param-description"><p>List of app objects representing all installed apps.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getJobHistory" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getJobHistory</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l498"><code>dist&#x2F;fabmo.js:498</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get a list of jobs in the history.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">start</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+								<div class="param-description"><p>The location in the results to start</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">count</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+								<div class="param-description"><p>The number of jobs to return</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">jobs</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[][]</a></span>
+
+								<div class="param-description"><p>Array of jobs in the history</p>
 </div>
 
 							</li>
@@ -705,6 +1186,200 @@ of no specific description that is saved with each app.  It can be used to store
 
 
 </div>
+<div id="method-getJobInfo" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getJobInfo</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>id</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l454"><code>dist&#x2F;fabmo.js:454</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get information about a job.  This works for jobs that are pending, currently running, or in the history.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">id</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>The ID of the job to cancel</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">job</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>Information about the requested job.</p>
+</div>
+
+									<ul class="params-list">
+										<li class="param">
+												<code class="param-name">name</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">Job name</div>
+										</li>
+										<li class="param">
+												<code class="param-name">description</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">Job description</div>
+										</li>
+										<li class="param">
+												<code class="param-name">created_at</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">Job creation time (UTC datetime)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">started_at</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">Job start time (UTC datetime)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">finished_at</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">Job completion time (UTC datetime)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">state</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">Current state of the job.  One of <code>pending</code>,<code>running</code>,<code>finished</code>,<code>cancelled</code> or <code>failed</code></div>
+										</li>
+									</ul>
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getJobsInQueue" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getJobsInQueue</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l473"><code>dist&#x2F;fabmo.js:473</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get a list of jobs that are currently pending and running.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">jobs</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>Object containing both the pending and running jobs</p>
+</div>
+
+									<ul class="params-list">
+										<li class="param">
+												<code class="param-name">pending</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+											<div class="param-description">List of pending jobs.  May be empty.</div>
+										</li>
+										<li class="param">
+												<code class="param-name">running</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+											<div class="param-description">List of running jobs.  May be empty.</div>
+										</li>
+									</ul>
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
 <div id="method-getJobsInQueue" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>getJobsInQueue</code></span>
@@ -805,6 +1480,71 @@ of no specific description that is saved with each app.  It can be used to store
 	<div class="meta">
 				<p>
 				Defined in
+		<a href="../files/dist_fabmo.js.html#l700"><code>dist&#x2F;fabmo.js:700</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get a list of all the macros installed on the tool.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">macros</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>List of macro objects currently installed.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getMacros" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getMacros</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
 		<a href="../files/fabmo.js.html#l700"><code>fabmo.js:700</code></a>
 		</p>
 
@@ -870,7 +1610,98 @@ of no specific description that is saved with each app.  It can be used to store
 	<div class="meta">
 				<p>
 				Defined in
-		<a href="../files/fabmo.js.html#l810"><code>fabmo.js:810</code></a>
+		<a href="../files/fabmo.js.html#l792"><code>fabmo.js:792</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Get the current FabMo version</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type">Fuction</span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">version</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>Object describing the fabmo software version.</p>
+</div>
+
+									<ul class="params-list">
+										<li class="param">
+												<code class="param-name">hash</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The git hash of the currently running FabMo software</div>
+										</li>
+										<li class="param">
+												<code class="param-name">number</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The user-friendly release version number (or empty string if not a released version</div>
+										</li>
+										<li class="param">
+												<code class="param-name">debug</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+											<div class="param-description">True if FabMo is running in "debug mode"</div>
+										</li>
+										<li class="param">
+												<code class="param-name">type</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The type of FabMo software build.  <code>dev</code> for development or <code>release</code> for released build.</div>
+										</li>
+									</ul>
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-getVersion" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getVersion</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l792"><code>dist&#x2F;fabmo.js:792</code></a>
 		</p>
 
 
@@ -961,6 +1792,65 @@ of no specific description that is saved with each app.  It can be used to store
 	<div class="meta">
 				<p>
 				Defined in
+		<a href="../files/dist_fabmo.js.html#l316"><code>dist&#x2F;fabmo.js:316</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Hide the DRO (Digital ReadOut) in the dashboard if it is not already hidden.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+					<div class="param-description"><p>Called once the DRO has been hidden.</p>
+</div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-hideDRO" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>hideDRO</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
 		<a href="../files/fabmo.js.html#l316"><code>fabmo.js:316</code></a>
 		</p>
 
@@ -1018,6 +1908,44 @@ of no specific description that is saved with each app.  It can be used to store
 				<p>
 				Defined in
 		<a href="../files/fabmo.js.html#l46"><code>fabmo.js:46</code></a>
+		</p>
+
+
+
+	</div>
+
+
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+					<p>True if running in the actual FabMo dashboard.  False otherwise.</p>
+
+			</div>
+		</div>
+
+</div>
+<div id="method-isPresent" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>isPresent</code></span>
+
+		<span class="paren">()</span>
+		<span class="returns-inline">
+			<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+		</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l46"><code>dist&#x2F;fabmo.js:46</code></a>
 		</p>
 
 
@@ -1126,6 +2054,95 @@ of no specific description that is saved with each app.  It can be used to store
 
 
 </div>
+<div id="method-launchApp" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>launchApp</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>id</code>
+				</li>
+				<li class="arg">
+						<code>args</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l291"><code>dist&#x2F;fabmo.js:291</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Launch the specified app by app ID, with optional arguments.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">id</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>The id of the app to launch.</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">args</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>Arguments object to pass to the app.</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">app</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>App info for the launched app if launch was successful</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
 <div id="method-manualHeartbeat" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>manualHeartbeat</code></span>
@@ -1142,6 +2159,35 @@ of no specific description that is saved with each app.  It can be used to store
 				<p>
 				Defined in
 		<a href="../files/fabmo.js.html#l586"><code>fabmo.js:586</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Send a "heartbeat" to the system, authorizing continued manual movement.  Manual moves must be continually
+refreshed with this heartbeat function, or the tool will stop moving.</p>
+</div>
+
+
+
+</div>
+<div id="method-manualHeartbeat" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>manualHeartbeat</code></span>
+
+		<span class="paren">()</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l586"><code>dist&#x2F;fabmo.js:586</code></a>
 		</p>
 
 
@@ -1186,6 +2232,99 @@ refreshed with this heartbeat function, or the tool will stop moving.</p>
 				<p>
 				Defined in
 		<a href="../files/fabmo.js.html#l561"><code>fabmo.js:561</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Perform a fixed manual move in a single axis.  (Sometimes called a nudge)</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">axis</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>One of <code>x</code>,<code>y</code>,<code>z</code>,<code>a</code>,<code>b</code>,<code>c</code></p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">speed</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>Speed in current tool units</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">distance</code>
+						<span class="type">Distance</span>
+
+
+					<div class="param-description"><p>The distance to move in current units</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-manualMoveFixed" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>manualMoveFixed</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>axis</code>
+				</li>
+				<li class="arg">
+						<code>speed</code>
+				</li>
+				<li class="arg">
+						<code>distance</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l561"><code>dist&#x2F;fabmo.js:561</code></a>
 		</p>
 
 
@@ -1309,6 +2448,95 @@ refreshed with this heartbeat function, or the tool will stop moving.</p>
 
 
 </div>
+<div id="method-manualStart" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>manualStart</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>axis</code>
+				</li>
+				<li class="arg">
+						<code>speed</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l575"><code>dist&#x2F;fabmo.js:575</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Start performing a manual move of the specified axis at the specified speed.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">axis</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>One of <code>x</code>,<code>y</code>,<code>z</code>,<code>a</code>,<code>b</code>,<code>c</code></p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">speed</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>Speed in current tool units.  Negative to move in the negative direction.</p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-manualStop" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>manualStop</code></span>
+
+		<span class="paren">()</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l596"><code>dist&#x2F;fabmo.js:596</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Stop the tool immediately.</p>
+</div>
+
+
+
+</div>
 <div id="method-manualStop" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>manualStop</code></span>
@@ -1361,7 +2589,7 @@ refreshed with this heartbeat function, or the tool will stop moving.</p>
 	<div class="meta">
 				<p>
 				Defined in
-		<a href="../files/fabmo.js.html#l826"><code>fabmo.js:826</code></a>
+		<a href="../files/dist_fabmo.js.html#l808"><code>dist&#x2F;fabmo.js:808</code></a>
 		</p>
 
 
@@ -1399,6 +2627,162 @@ or more rarely, to navigate away from the dashboard.</p>
 									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
 								<div class="param-description"><p>The link target (same as the target argument of <code>window.open</code>)</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-navigate" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>navigate</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>url</code>
+				</li>
+				<li class="arg">
+						<code>options</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/fabmo.js.html#l808"><code>fabmo.js:808</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Control top level navigation for the dashboard.  Usually this is used to open another browser/tab window with a link from within an app,
+or more rarely, to navigate away from the dashboard.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">url</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>The URL to open</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>Options for top-level navigation.</p>
+</div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">target</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+								<div class="param-description"><p>The link target (same as the target argument of <code>window.open</code>)</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-notify" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>notify</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>type</code>
+				</li>
+				<li class="arg">
+						<code>message</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l327"><code>dist&#x2F;fabmo.js:327</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard,
+but the dashboard reserves the right to format or even suppress these messages as suits its needs.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">type</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>Type of message, which can be one of <code>info</code>,<code>warn</code>,<code>error</code>, or <code>success</code></p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">message</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>The text to be displayed in the notification.</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+					<div class="param-description"><p>Called once the message has been displayed</p>
+</div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
 </div>
 
 							</li>
@@ -1554,6 +2938,134 @@ but the dashboard reserves the right to format or even suppress these messages a
 
 
 </div>
+<div id="method-on" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>on</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>name</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l225"><code>dist&#x2F;fabmo.js:225</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Bind a callback to the specified event.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">name</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>Event name</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+					<div class="param-description"><p>Event handler</p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-pause" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>pause</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l525"><code>dist&#x2F;fabmo.js:525</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Pause the execution of the current job or operation.  Operation can be resumed.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
 <div id="method-pause" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>pause</code></span>
@@ -1642,7 +3154,194 @@ but the dashboard reserves the right to format or even suppress these messages a
 	<div class="meta">
 				<p>
 				Defined in
-		<a href="../files/fabmo.js.html#l746"><code>fabmo.js:746</code></a>
+		<a href="../files/dist_fabmo.js.html#l728"><code>dist&#x2F;fabmo.js:728</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Request a status report from the system.  The status object is returned in the callback to this function, as well as posted
+with the status event.  To recieve updates to system status as it changes, you should bind a handler to the status event,
+and <em>not</em> poll using <code>requestStatus</code>.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">status</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>The status report object</p>
+</div>
+
+									<ul class="params-list">
+										<li class="param">
+												<code class="param-name">state</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The system state, one of <code>idle</code>,<code>running</code>,<code>paused</code>,<code>stopped</code>,<code>manual</code> or <code>dead</code></div>
+										</li>
+										<li class="param">
+												<code class="param-name">posx</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current x-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">posy</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current y-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">posz</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current z-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">posa</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current a-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">posb</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current b-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">posc</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current c-axis position</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 1 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 2 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 3 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 4 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 5 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 6 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 7 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">in1</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The current state of input 8 (<code>0</code> or <code>1</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">unit</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+											<div class="param-description">The current tool units (either <code>in</code> or <code>mm</code>)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">line</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The line number in the currently running file (if a file is running)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">nb_lines</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+											<div class="param-description">The total number of lines in the currently running file (if a file is running)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">auth</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+											<div class="param-description">True if the tool is currently authorized for movement</div>
+										</li>
+										<li class="param">
+												<code class="param-name">current_file</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+											<div class="param-description">Object describing the currently running file (or null if not running a file)</div>
+										</li>
+										<li class="param">
+												<code class="param-name">job</code>
+												<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+											<div class="param-description">Object describing the currently running job (or null if not running a job)</div>
+										</li>
+									</ul>
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-requestStatus" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>requestStatus</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/fabmo.js.html#l728"><code>fabmo.js:728</code></a>
 		</p>
 
 
@@ -1877,6 +3576,142 @@ and <em>not</em> poll using <code>requestStatus</code>.</p>
 
 
 </div>
+<div id="method-resubmitJob" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>resubmitJob</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>id</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l430"><code>dist&#x2F;fabmo.js:430</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Resubmit a job by its ID.  Resubmitted jobs come in at the back of the job queue.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">id</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>The ID of the job to resubmit</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-resume" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>resume</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l549"><code>dist&#x2F;fabmo.js:549</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Resume the current operation of the system is paused.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
 <div id="method-resume" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>resume</code></span>
@@ -1925,6 +3760,75 @@ and <em>not</em> poll using <code>requestStatus</code>.</p>
 				<li class="param">
 						<code class="param-name">callback</code>
 						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-runMacro" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>runMacro</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>id</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l712"><code>dist&#x2F;fabmo.js:712</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Run the specified macro immediately.  Macro does not appear in the job history.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">id</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>The id of the macro to run.</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
 
 
@@ -2080,6 +3984,73 @@ and <em>not</em> poll using <code>requestStatus</code>.</p>
 
 
 </div>
+<div id="method-runNext" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>runNext</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l513"><code>dist&#x2F;fabmo.js:513</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Run the next job in the job queue.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
 <div id="method-setAppConfig" class="method item">
 	<div class="method-signature">
 	<span class="name"><code>setAppConfig</code></span>
@@ -2104,7 +4075,84 @@ and <em>not</em> poll using <code>requestStatus</code>.</p>
 	<div class="meta">
 				<p>
 				Defined in
-		<a href="../files/fabmo.js.html#l797"><code>fabmo.js:797</code></a>
+		<a href="../files/fabmo.js.html#l779"><code>fabmo.js:779</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Set the app configuration to the provided option.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">config</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>The configuration object to set.</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+							<li class="param">
+									<code class="param-name">config</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+								<div class="param-description"><p>Configuration object or {} if no configuration has been saved in the app.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-setAppConfig" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>setAppConfig</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>config</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l779"><code>dist&#x2F;fabmo.js:779</code></a>
 		</p>
 
 
@@ -2199,6 +4247,132 @@ and <em>not</em> poll using <code>requestStatus</code>.</p>
 
 					<div class="param-description"><p>Called once the DRO has been displayed.</p>
 </div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-showDRO" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>showDRO</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l305"><code>dist&#x2F;fabmo.js:305</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Show the DRO (Digital ReadOut) in the dashboard if it is not already shown.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+					<div class="param-description"><p>Called once the DRO has been displayed.</p>
+</div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">err</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+
+								<div class="param-description"><p>Error object if there was an error.</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-stop" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>stop</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+				<li class="arg">
+						<code>callback</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/dist_fabmo.js.html#l537"><code>dist&#x2F;fabmo.js:537</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Stop execution of the current job or operation.  Operation cannot be resumed.</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+				</li>
+				<li class="param">
+						<code class="param-name">callback</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
 
 						<ul class="params-list">
 							<li class="param">

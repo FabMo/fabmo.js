@@ -1,10 +1,27 @@
+
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="https://handibot.com/css/global.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
         <title>fabmo.js</title>
     </head>
     <body>
+    <a href="https://github.com/FabMo/fabmo.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+        <div class="container">
         <h1>fabmo.js</h1>
         <h2>Bring apps to the world of CNC!</h2>
+        
+        <p>
+            <a class="download-button" href="https://github.com/FabMo/fabmo.js/releases/v0.0.15/fabmo.js">fabmo.js</a>
+            <a class="download-button" href="https://github.com/FabMo/fabmo.js/releases/v0.0.15/fabmo.js">fabmo.min.js</a>
+        </p>
 
         <h3>Overview</h3>
         <p>FabMo is a software framework for next generation CNC.  fabmo.js connects app developers to their tool by way of the FabMo API.  Don't know FabMo?  <a href="https://gofabmo.org/">Go FabMo!</a></p>
@@ -12,128 +29,70 @@
         <h3>Features</h3>
         <p>fabmo.js provides the complete API needed to communicate with a FabMo tool from your app.  Key functions include:</p>
         <ul>
-			<li>Submit jobs to the tool</li>
-			<li> Run CNC code directly on the tool </li>
-			<li> Recieve run-time information from the tool. (Tool position, Tool status, Job progress, etc.) </li>
-			<li> Manage tool and app configuration data. </li>
-			<li> Drive the tool manually. </li>
-			<li> Interact with the FabMo dashboard. (Post notifications, Display the DRO, Prompt the user) </li>
-		</ul>
+            <li>Submit jobs to the tool</li>
+            <li> Run CNC code directly on the tool </li>
+            <li> Recieve run-time information from the tool. (Tool position, Tool status, Job progress, etc.) </li>
+            <li> Manage tool and app configuration data. </li>
+            <li> Drive the tool manually. </li>
+            <li> Interact with the FabMo dashboard. (Post notifications, Display the DRO, Prompt the user) </li>
+        </ul>
 
-		<h3>Usage</h3>
-		<h4>Get Started</h4>
-		<pre>
-			var fabmo = new FabMoDashboard();
-			console.log(fabmo.version);
-		</pre>		
- 
- 		<h4>Run Some Code</h4>
-		<pre>
-			// This runs immediately
-			fabmo.runGCode('G0 X0 Y0');
-		</pre>		
- 
- 		<h4>Start a Job</h4>
-		<pre>
-			var gcodes = [
-				'G0 X0 Y0 (Go Home)',
-				'G0 Z0.5 (Pull Up)',
-				'G0 X1 Y1 (Go to 1,1)',
-				'(Cut a square)',
-				'M4 (SPINDLE ON)',
-				'G1 Z-0.125 (Plunge 1/8")',
-				'G1 X2',
-				'G1 Y2',
-				'G1 X1',
-				'G1 Y1',
-				'G0 Z0.5 (Pull Up)',
-				'M8 (Spindle off)',
-				'G0 X0 Y0 (Go Home)'
-			];
-
-			fabmo.submitJob({
-				file : gcodes,
-				filename : "square.nc",
-				description : "Cuts a 1-inch square at 1,1"
-			});		
-		</pre>		
- 
- 		<h4>Get Notified</h4>
-		<pre>
-			fabmo.on('status', function(status) {
-				document.getElementById('x-display').innerHTML = status.posx;
-				document.getElementById('y-display').innerHTML = status.posy;
-				document.getElementById('z-display').innerHTML = status.posz;
-			});		
-		</pre>		
- 
- 		<h3>Example Apps</h3>
- 		<p>There are lots of good examples online of apps that use `fabmo.js` - Choose one that's similar to your application:</p>
-		<ul>
-			<li> <a href="http://fabmo.github.io/fabmo-example-app/">The Official FabMo Example App</a> - Covers a lot of the API in simple examples.</li>
-			<li> <a href="http://fabmo.github.io/fabmo-touchandgo-app/">FabMo Touch-and-Go</a> - Runs immediate code, interacts with configuration, responds to status reports.</li>
-			<li> <a href="http://fabmo.github.io/fabmo-holecutter-app/">Hole Cutter</a> - Submits a job based on input parameters.</li>
-			<li> <a href="http://fabmo.github.io/fabmo-terrainman-app/">Terrainman</a> - More complex job based on input parameters.</li>
-			<li> <a href="http://fabmo.github.io/fabmo-the-news-app/">Handibot News</a> - Display a simple page from an external site.</li>
-		</ul>
-    </body>
-</html>
-
-
-## Usage
-
-### Get started
-```js
+        <h3>Usage</h3>
+        <h4>Get Started</h4>
+        <pre><code>
 var fabmo = new FabMoDashboard();
 console.log(fabmo.version);
-```
-
-### Run some code (right away!)
-```js
+        </code></pre>     
+ 
+        <h4>Run Some Code</h4>
+        <pre><code>
+// This runs immediately
 fabmo.runGCode('G0 X0 Y0');
-```
-
-### Start a job
-```js
+        </code></pre>      
+ 
+        <h4>Start a Job</h4>
+        <pre><code>
 var gcodes = [
-	'G0 X0 Y0 (Go Home)',
-	'G0 Z0.5 (Pull Up)',
-	'G0 X1 Y1 (Go to 1,1)',
-	'(Cut a square)',
-	'M4 (SPINDLE ON)',
-	'G1 Z-0.125 (Plunge 1/8")',
-	'G1 X2',
-	'G1 Y2',
-	'G1 X1',
-	'G1 Y1',
-	'G0 Z0.5 (Pull Up)',
-	'M8 (Spindle off)',
-	'G0 X0 Y0 (Go Home)'
+    'G0 X0 Y0 (Go Home)',
+    'G0 Z0.5 (Pull Up)',
+    'G0 X1 Y1 (Go to 1,1)',
+    '(Cut a square)',
+    'M4 (SPINDLE ON)',
+    'G1 Z-0.125 (Plunge 1/8")',
+    'G1 X2',
+    'G1 Y2',
+    'G1 X1',
+    'G1 Y1',
+    'G0 Z0.5 (Pull Up)',
+    'M8 (Spindle off)',
+    'G0 X0 Y0 (Go Home)'
 ];
 
 fabmo.submitJob({
-	file : gcodes,
-	filename : "square.nc",
-	description : "Cuts a 1-inch square at 1,1"
-});
-```
-
-### Get notified
-```js
+    file : gcodes,
+    filename : "square.nc",
+    description : "Cuts a 1-inch square at 1,1"
+});     
+        </code></pre>      
+ 
+        <h4>Get Notified</h4>
+        <pre><code>
 fabmo.on('status', function(status) {
-	document.getElementById('x-display').innerHTML = status.posx;
-	document.getElementById('y-display').innerHTML = status.posy;
-	document.getElementById('z-display').innerHTML = status.posz;
-});
-```
-
-# Example Apps
-There are lots of good examples online of apps that use `fabmo.js` - Choose one that's similar to your application:
- * [The Official FabMo Example App](http://fabmo.github.io/fabmo-example-app/) - Covers a lot of the API in simple examples.
- * [FabMo Touch-And-Go](http://fabmo.github.io/fabmo-touchandgo-app/) - Runs immediate code, interacts with configuration, responds to status reports.
- * [Hole Cutter](http://fabmo.github.io/fabmo-holecutter-app/) - Submits a job based on input parameters.
- * [Terrainman](http://fabmo.github.io/fabmo-terrainman-app/) - More complex job based on input parameters.
- * [Handibot News](http://fabmo.github.io/fabmo-the-news-app/) - Display a simple page from an external site.
-
-# Browser Compatibility
-The FabMo dashboard runs in Chrome, Firefox and Safari (TODO include tested versions)
+    document.getElementById('x-display').innerHTML = status.posx;
+    document.getElementById('y-display').innerHTML = status.posy;
+    document.getElementById('z-display').innerHTML = status.posz;
+});     
+        </code></pre>      
+ 
+        <h3>Example Apps</h3>
+        <p>There are lots of good examples online of apps that use `fabmo.js` - Choose one that's similar to your application:</p>
+        <ul>
+            <li> <a href="http://fabmo.github.io/fabmo-example-app/">The Official FabMo Example App</a> - Covers a lot of the API in simple examples.</li>
+            <li> <a href="http://fabmo.github.io/fabmo-touchandgo-app/">FabMo Touch-and-Go</a> - Runs immediate code, interacts with configuration, responds to status reports.</li>
+            <li> <a href="http://fabmo.github.io/fabmo-holecutter-app/">Hole Cutter</a> - Submits a job based on input parameters.</li>
+            <li> <a href="http://fabmo.github.io/fabmo-terrainman-app/">Terrainman</a> - More complex job based on input parameters.</li>
+            <li> <a href="http://fabmo.github.io/fabmo-the-news-app/">Handibot News</a> - Display a simple page from an external site.</li>
+        </ul>
+        </div><!-- /container -->
+    </body>
+</html>
