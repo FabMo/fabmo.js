@@ -2,7 +2,7 @@
     "project": {
         "name": "fabmo.js",
         "description": "Javascript library for writing FabMo apps.",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "url": "https://github.com/FabMo/fabmo.js#readme"
     },
     "files": {
