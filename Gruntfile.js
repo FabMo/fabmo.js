@@ -66,7 +66,7 @@ module.exports = function(grunt) {
       url: '<%= pkg.homepage %>',
       options: {
         "paths": ".",
-        "outdir": "dist/apidocs",
+        "outdir": "dist/doc/api",
         "ignorepaths" : ["dist","node_modules"],
         "themedir" : "node_modules/yuidoc-lucid-theme",
         "helpers" : ["node_modules/yuidoc-lucid-theme/helpers/helpers.js"],
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 
   'gh-pages': {
       options: {
-        base: 'dist/apidocs'
+        base: 'dist/doc/'
       },
       src: ['**']
     },
@@ -117,6 +117,10 @@ grunt.registerTask('check-github-auth', 'Check that a github username/password',
 
   grunt.registerTask('doc', 'Generate documentation', function() {
     grunt.task.run(['yuidoc']);
+  });
+
+  grunt.registerTask('doc-dist', 'Push documentation to web.', function() {
+    grunt.task.run(['doc', 'gh-pages']);
   });
 
 };

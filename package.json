@@ -30,6 +30,7 @@
     "grunt-github-releaser": "^0.1.18",
     "grunt-string-replace": "^1.2.1",
     "uglify": "^0.1.5",
+    "yuidoc-lucid-theme": "^0.1.2",
     "yuidocjs": "^0.10.0"
   }
 }
