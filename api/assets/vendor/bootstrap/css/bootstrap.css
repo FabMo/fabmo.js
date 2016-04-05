@@ -205,9 +205,9 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
+  font-family: "museo-sans" sans-serif;
+  font-size: 18px;
+  line-height: 24px;
   color: #333333;
   background-color: #ffffff;
 }
@@ -685,7 +685,7 @@ ol ul {
   margin-bottom: 0;
 }
 li {
-  line-height: 14px;
+  line-height: 24px;
 }
 ul.unstyled,
 ol.unstyled {
@@ -1214,7 +1214,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "museo-sans", sans-serif;
 }
 label {
   display: block;
@@ -3573,7 +3573,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   margin-bottom: 0;
   padding: 4px 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "museo-sans", sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
