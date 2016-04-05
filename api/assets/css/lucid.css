@@ -65,7 +65,7 @@ code.param-name {
 .method {
 	font-size: 16px;
 	line-height: 20px;
-	padding-bottom: 2em;
+	margin-bottom: 2em !important;
 }
 
 .method li {
