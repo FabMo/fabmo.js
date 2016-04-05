@@ -1,0 +1,3 @@
+[submodule "yuidoc-fabmo-theme"]
+	path = yuidoc-fabmo-theme
+	url = https://github.com/FabMo/yuidoc-fabmo-theme

@@ -73,10 +73,11 @@ grunt.initConfig({
       url: '<%= pkg.homepage %>',
       options: {
         "paths": ".",
+        "exclude" : "dist",
         "outdir": "dist/doc/api",
         "ignorepaths" : ["dist","node_modules"],
-        "themedir" : "node_modules/yuidoc-lucid-theme",
-        "helpers" : ["node_modules/yuidoc-lucid-theme/helpers/helpers.js"],
+        "themedir" : "yuidoc-fabmo-theme",
+        "helpers" : ["yuidoc-fabmo-theme/helpers/helpers.js"],
         "linkNatives" : true
       }
     }
