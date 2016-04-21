@@ -24,9 +24,11 @@ var FabMoDashboard = function() {
     this.version = '{{FABMO_VERSION}}';
 	this.target = window.parent;
 	this.window = window;
+	this._setOptions(options);
 	this._id = 0;
 	this._handlers = {};
 	this.status = {};
+	this.isReady = false;
 	this._event_listeners = {
 		'status' : [],
 		'job_start' : [],
@@ -41,6 +43,16 @@ var FabMoDashboard = function() {
             this.stop();
         }
     }.bind(this);
+
+    if(!this.options.defer) {
+		this.ready();
+	}
+}
+
+FabMoDashboard.prototype._setOptions = function(options) {
+	options = options || {};
+	this.options = {};
+	this.options.defer = options.defer || false;
 }
 
 /**
@@ -266,6 +278,25 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 }
 
 /**
+ * Indicate that the app is loaded and ready to go!
+ * @method ready
+ */
+FabMoDashboard.prototype.ready = function() {
+	this._call('ready');
+	this.isReady = true;
+}
+
+/**
+ * Set the message to display while an app is loading.  You can call this any time before
+ * calling the `ready()` function, to indicate loading or setup progress.
+ * @method setBusy
+ * @param {String} The message to display.
+ */
+FabMoDashboard.prototype.setBusyMessage = function(message) {
+	this._call('setBusyMessage', {'message' : message});
+}
+
+/**
  * If this app was invoked from another app, get the arguments (if any) that were passed on invocation.
  *
  * @method getAppArgs
@@ -324,6 +355,20 @@ FabMoDashboard.prototype.hideDRO = function(callback) {
 	this._call("hideDRO", null, callback);
 }
 
+//Modal Functions 
+FabMoDashboard.prototype.showModal = function(options, callback) {
+    this._call("openModal", options, callback);
+}
+
+FabMoDashboard.prototype.hideModal = function(options, callback) {
+    this._call("closeModal", null, callback);
+}
+
+// Footer Functions
+FabMoDashboard.prototype.showFooter = function(callback) {
+	this._call("showFooter", null, callback);
+}
+
 /**
  * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, 
  * but the dashboard reserves the right to format or even suppress these messages as suits its needs.
@@ -337,6 +382,16 @@ FabMoDashboard.prototype.hideDRO = function(callback) {
 FabMoDashboard.prototype.notify = function(type, message, callback) {
 	this._call("notify", {'type':type, 'message':message}, callback);
 }
+
+FabMoDashboard.prototype.hideFooter = function(callback) {
+	this._call("hideFooter", null, callback);
+}
+
+// Notification functions
+FabMoDashboard.prototype.notification = function(type,message,callback) {
+	this._call("notification", {'type':type,'message':message}, callback);
+}
+FabMoDashboard.prototype.notify = FabMoDashboard.prototype.notification;
 
 function _makeFile(obj) {
 	if(obj instanceof jQuery) {
@@ -697,6 +752,15 @@ FabMoDashboard.prototype.disableWifiHotspot = function(callback) {
 	this._call("disableWifiHotspot", null, callback);
 }
 
+FabMoDashboard.prototype.getWifiNetworks = function(callback) {
+	this._call("getWifiNetworks", null, callback);
+}
+
+FabMoDashboard.prototype.getWifiNetworkHistory = function(callback) {
+	this._call("getWifiNetworkHistory", null, callback);
+}
+
+
 /**
  * Get a list of all the macros installed on the tool.
  * 
@@ -814,7 +878,8 @@ FabMoDashboard.prototype.getVersion = function(callback) {
  * @param {String} options.target The link target (same as the target argument of `window.open`)
  */
 FabMoDashboard.prototype.navigate = function(url, options, callback) {
-	this._call("navigate", {'url' : url, 'options' : options || {}}, callback);
+	var loc = window.location.href;
+	this._call("navigate", {'path' : loc.substr(0, loc.lastIndexOf('/')) + '/', 'url' : url, 'options' : options || {}}, callback);
 }
 
 var toaster = function () {
