@@ -113,6 +113,7 @@
                         				<li><a href="#method-getMacros"><span class="im">getMacros</span>(<span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-getVersion"><span class="im">getVersion</span>(<span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-hideDRO"><span class="im">hideDRO</span>(<span class="ia">callback</span>)</a></li>
+                        				<li><a href="#method-hideModal"><span class="im">hideModal</span>(<span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-isPresent"><span class="im">isPresent</span>()</a></li>
                         				<li><a href="#method-launchApp"><span class="im">launchApp</span>(<span class="ia">id</span><span class="ia">args</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-manualHeartbeat"><span class="im">manualHeartbeat</span>()</a></li>
@@ -123,13 +124,16 @@
                         				<li><a href="#method-notify"><span class="im">notify</span>(<span class="ia">type</span><span class="ia">message</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-on"><span class="im">on</span>(<span class="ia">name</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-pause"><span class="im">pause</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
+                        				<li><a href="#method-ready"><span class="im">ready</span>()</a></li>
                         				<li><a href="#method-requestStatus"><span class="im">requestStatus</span>(<span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-resubmitJob"><span class="im">resubmitJob</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-resume"><span class="im">resume</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-runMacro"><span class="im">runMacro</span>(<span class="ia">id</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-runNext"><span class="im">runNext</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-setAppConfig"><span class="im">setAppConfig</span>(<span class="ia">config</span><span class="ia">callback</span>)</a></li>
+                        				<li><a href="#method-setBusy"><span class="im">setBusy</span>(<span class="ia">The</span>)</a></li>
                         				<li><a href="#method-showDRO"><span class="im">showDRO</span>(<span class="ia">callback</span>)</a></li>
+                        				<li><a href="#method-showModal"><span class="im">showModal</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
                         				<li><a href="#method-stop"><span class="im">stop</span>(<span class="ia">options</span><span class="ia">callback</span>)</a></li>
                         			</ul>
                         		</li>
@@ -169,7 +173,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l442"><code>fabmo.js:442</code></a>
+                        		<a href="../files/fabmo.js.html#l505"><code>fabmo.js:505</code></a>
                         		</p>
                         
                         
@@ -235,7 +239,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l487"><code>fabmo.js:487</code></a>
+                        		<a href="../files/fabmo.js.html#l550"><code>fabmo.js:550</code></a>
                         		</p>
                         
                         
@@ -286,7 +290,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l268"><code>fabmo.js:268</code></a>
+                        		<a href="../files/fabmo.js.html#l299"><code>fabmo.js:299</code></a>
                         		</p>
                         
                         
@@ -320,7 +324,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l766"><code>fabmo.js:766</code></a>
+                        		<a href="../files/fabmo.js.html#l838"><code>fabmo.js:838</code></a>
                         		</p>
                         
                         
@@ -386,7 +390,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l278"><code>fabmo.js:278</code></a>
+                        		<a href="../files/fabmo.js.html#l309"><code>fabmo.js:309</code></a>
                         		</p>
                         
                         
@@ -459,7 +463,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l605"><code>fabmo.js:605</code></a>
+                        		<a href="../files/fabmo.js.html#l668"><code>fabmo.js:668</code></a>
                         		</p>
                         
                         
@@ -527,7 +531,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l498"><code>fabmo.js:498</code></a>
+                        		<a href="../files/fabmo.js.html#l561"><code>fabmo.js:561</code></a>
                         		</p>
                         
                         
@@ -620,7 +624,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l454"><code>fabmo.js:454</code></a>
+                        		<a href="../files/fabmo.js.html#l517"><code>fabmo.js:517</code></a>
                         		</p>
                         
                         
@@ -732,7 +736,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l473"><code>fabmo.js:473</code></a>
+                        		<a href="../files/fabmo.js.html#l536"><code>fabmo.js:536</code></a>
                         		</p>
                         
                         
@@ -811,7 +815,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l700"><code>fabmo.js:700</code></a>
+                        		<a href="../files/fabmo.js.html#l772"><code>fabmo.js:772</code></a>
                         		</p>
                         
                         
@@ -876,7 +880,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l792"><code>fabmo.js:792</code></a>
+                        		<a href="../files/fabmo.js.html#l864"><code>fabmo.js:864</code></a>
                         		</p>
                         
                         
@@ -967,7 +971,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l316"><code>fabmo.js:316</code></a>
+                        		<a href="../files/fabmo.js.html#l347"><code>fabmo.js:347</code></a>
                         		</p>
                         
                         
@@ -975,6 +979,65 @@
                         	</div>
                         
                         	<div class="description"><p>Hide the DRO (Digital ReadOut) in the dashboard if it is not already hidden.</p>
+                        </div>
+                        
+                        		<div class="params">
+                        			<h4>Parameters:</h4>
+                        
+                        			<ul class="params-list">
+                        				<li class="param">
+                        						<code class="param-name">callback</code>
+                        						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+                        
+                        					<div class="param-description"><p>Called once the DRO has been hidden.</p>
+                        </div>
+                        
+                        						<ul class="params-list">
+                        							<li class="param">
+                        									<code class="param-name">err</code>
+                        									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+                        
+                        								<div class="param-description"><p>Error object if there was an error.</p>
+                        </div>
+                        
+                        							</li>
+                        						</ul>
+                        				</li>
+                        			</ul>
+                        		</div>
+                        
+                        
+                        </div>
+                        <div id="method-hideModal" class="method item">
+                        	<div class="method-signature">
+                        	<span class="name"><code>hideModal</code></span>
+                        
+                        		<div class="args">
+                        			<span class="paren">(</span><ul class="args-list inline commas">
+                        				<li class="arg">
+                        						<code>callback</code>
+                        				</li>
+                        			</ul><span class="paren">)</span>
+                        		</div>
+                        	</div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        	<div class="meta">
+                        				<p>
+                        				Defined in
+                        		<a href="../files/fabmo.js.html#l370"><code>fabmo.js:370</code></a>
+                        		</p>
+                        
+                        
+                        
+                        	</div>
+                        
+                        	<div class="description"><p>Hide the Dashboard Modal.</p>
                         </div>
                         
                         		<div class="params">
@@ -1023,7 +1086,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l46"><code>fabmo.js:46</code></a>
+                        		<a href="../files/fabmo.js.html#l58"><code>fabmo.js:58</code></a>
                         		</p>
                         
                         
@@ -1070,7 +1133,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l291"><code>fabmo.js:291</code></a>
+                        		<a href="../files/fabmo.js.html#l322"><code>fabmo.js:322</code></a>
                         		</p>
                         
                         
@@ -1147,7 +1210,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l586"><code>fabmo.js:586</code></a>
+                        		<a href="../files/fabmo.js.html#l649"><code>fabmo.js:649</code></a>
                         		</p>
                         
                         
@@ -1191,7 +1254,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l561"><code>fabmo.js:561</code></a>
+                        		<a href="../files/fabmo.js.html#l624"><code>fabmo.js:624</code></a>
                         		</p>
                         
                         
@@ -1278,7 +1341,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l575"><code>fabmo.js:575</code></a>
+                        		<a href="../files/fabmo.js.html#l638"><code>fabmo.js:638</code></a>
                         		</p>
                         
                         
@@ -1330,7 +1393,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l596"><code>fabmo.js:596</code></a>
+                        		<a href="../files/fabmo.js.html#l659"><code>fabmo.js:659</code></a>
                         		</p>
                         
                         
@@ -1367,7 +1430,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l808"><code>fabmo.js:808</code></a>
+                        		<a href="../files/fabmo.js.html#l880"><code>fabmo.js:880</code></a>
                         		</p>
                         
                         
@@ -1442,7 +1505,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l327"><code>fabmo.js:327</code></a>
+                        		<a href="../files/fabmo.js.html#l383"><code>fabmo.js:383</code></a>
                         		</p>
                         
                         
@@ -1523,7 +1586,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l225"><code>fabmo.js:225</code></a>
+                        		<a href="../files/fabmo.js.html#l237"><code>fabmo.js:237</code></a>
                         		</p>
                         
                         
@@ -1584,7 +1647,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l525"><code>fabmo.js:525</code></a>
+                        		<a href="../files/fabmo.js.html#l588"><code>fabmo.js:588</code></a>
                         		</p>
                         
                         
@@ -1627,6 +1690,34 @@
                         
                         
                         </div>
+                        <div id="method-ready" class="method item">
+                        	<div class="method-signature">
+                        	<span class="name"><code>ready</code></span>
+                        
+                        		<span class="paren">()</span>
+                        	</div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        	<div class="meta">
+                        				<p>
+                        				Defined in
+                        		<a href="../files/fabmo.js.html#l280"><code>fabmo.js:280</code></a>
+                        		</p>
+                        
+                        
+                        
+                        	</div>
+                        
+                        	<div class="description"><p>Indicate that the app is loaded and ready to go!</p>
+                        </div>
+                        
+                        
+                        
+                        </div>
                         <div id="method-requestStatus" class="method item">
                         	<div class="method-signature">
                         	<span class="name"><code>requestStatus</code></span>
@@ -1648,7 +1739,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l728"><code>fabmo.js:728</code></a>
+                        		<a href="../files/fabmo.js.html#l800"><code>fabmo.js:800</code></a>
                         		</p>
                         
                         
@@ -1838,7 +1929,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l430"><code>fabmo.js:430</code></a>
+                        		<a href="../files/fabmo.js.html#l493"><code>fabmo.js:493</code></a>
                         		</p>
                         
                         
@@ -1907,7 +1998,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l549"><code>fabmo.js:549</code></a>
+                        		<a href="../files/fabmo.js.html#l612"><code>fabmo.js:612</code></a>
                         		</p>
                         
                         
@@ -1974,7 +2065,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l712"><code>fabmo.js:712</code></a>
+                        		<a href="../files/fabmo.js.html#l784"><code>fabmo.js:784</code></a>
                         		</p>
                         
                         
@@ -2043,7 +2134,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l513"><code>fabmo.js:513</code></a>
+                        		<a href="../files/fabmo.js.html#l576"><code>fabmo.js:576</code></a>
                         		</p>
                         
                         
@@ -2110,7 +2201,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l779"><code>fabmo.js:779</code></a>
+                        		<a href="../files/fabmo.js.html#l851"><code>fabmo.js:851</code></a>
                         		</p>
                         
                         
@@ -2163,6 +2254,56 @@
                         
                         
                         </div>
+                        <div id="method-setBusy" class="method item">
+                        	<div class="method-signature">
+                        	<span class="name"><code>setBusy</code></span>
+                        
+                        		<div class="args">
+                        			<span class="paren">(</span><ul class="args-list inline commas">
+                        				<li class="arg">
+                        						<code>The</code>
+                        				</li>
+                        			</ul><span class="paren">)</span>
+                        		</div>
+                        	</div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        	<div class="meta">
+                        				<p>
+                        				Defined in
+                        		<a href="../files/fabmo.js.html#l289"><code>fabmo.js:289</code></a>
+                        		</p>
+                        
+                        
+                        
+                        	</div>
+                        
+                        	<div class="description"><p>Set the message to display while an app is loading.  You can call this any time before
+                        calling the <code>ready()</code> function, to indicate loading or setup progress.</p>
+                        </div>
+                        
+                        		<div class="params">
+                        			<h4>Parameters:</h4>
+                        
+                        			<ul class="params-list">
+                        				<li class="param">
+                        						<code class="param-name">The</code>
+                        						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+                        
+                        					<div class="param-description"><p>message to display.</p>
+                        </div>
+                        
+                        				</li>
+                        			</ul>
+                        		</div>
+                        
+                        
+                        </div>
                         <div id="method-showDRO" class="method item">
                         	<div class="method-signature">
                         	<span class="name"><code>showDRO</code></span>
@@ -2184,7 +2325,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l305"><code>fabmo.js:305</code></a>
+                        		<a href="../files/fabmo.js.html#l336"><code>fabmo.js:336</code></a>
                         		</p>
                         
                         
@@ -2204,6 +2345,78 @@
                         
                         
                         					<div class="param-description"><p>Called once the DRO has been displayed.</p>
+                        </div>
+                        
+                        						<ul class="params-list">
+                        							<li class="param">
+                        									<code class="param-name">err</code>
+                        									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+                        
+                        								<div class="param-description"><p>Error object if there was an error.</p>
+                        </div>
+                        
+                        							</li>
+                        						</ul>
+                        				</li>
+                        			</ul>
+                        		</div>
+                        
+                        
+                        </div>
+                        <div id="method-showModal" class="method item">
+                        	<div class="method-signature">
+                        	<span class="name"><code>showModal</code></span>
+                        
+                        		<div class="args">
+                        			<span class="paren">(</span><ul class="args-list inline commas">
+                        				<li class="arg">
+                        						<code class="optional">options</code>
+                        				</li>
+                        				<li class="arg">
+                        						<code>callback</code>
+                        				</li>
+                        			</ul><span class="paren">)</span>
+                        		</div>
+                        	</div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        	<div class="meta">
+                        				<p>
+                        				Defined in
+                        		<a href="../files/fabmo.js.html#l358"><code>fabmo.js:358</code></a>
+                        		</p>
+                        
+                        
+                        
+                        	</div>
+                        
+                        	<div class="description"><p>Show the Dashboard Modal.</p>
+                        </div>
+                        
+                        		<div class="params">
+                        			<h4>Parameters:</h4>
+                        
+                        			<ul class="params-list">
+                        				<li class="param">
+                        						<code class="param-name optional">[options]</code>
+                        						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        						<span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+                        
+                        					<div class="param-description"><p>Options for modal content</p>
+                        </div>
+                        
+                        				</li>
+                        				<li class="param">
+                        						<code class="param-name">callback</code>
+                        						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+                        
+                        					<div class="param-description"><p>Called once the modal is shown.</p>
                         </div>
                         
                         						<ul class="params-list">
@@ -2246,7 +2459,7 @@
                         	<div class="meta">
                         				<p>
                         				Defined in
-                        		<a href="../files/fabmo.js.html#l537"><code>fabmo.js:537</code></a>
+                        		<a href="../files/fabmo.js.html#l600"><code>fabmo.js:600</code></a>
                         		</p>
                         
                         

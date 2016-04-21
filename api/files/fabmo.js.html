@@ -108,9 +108,11 @@
                             this.version = &#x27;{{FABMO_VERSION}}&#x27;;
                         	this.target = window.parent;
                         	this.window = window;
+                        	this._setOptions(options);
                         	this._id = 0;
                         	this._handlers = {};
                         	this.status = {};
+                        	this.isReady = false;
                         	this._event_listeners = {
                         		&#x27;status&#x27; : [],
                         		&#x27;job_start&#x27; : [],
@@ -125,6 +127,16 @@
                                     this.stop();
                                 }
                             }.bind(this);
+                        
+                            if(!this.options.defer) {
+                        		this.ready();
+                        	}
+                        }
+                        
+                        FabMoDashboard.prototype._setOptions = function(options) {
+                        	options = options || {};
+                        	this.options = {};
+                        	this.options.defer = options.defer || false;
                         }
                         
                         /**
@@ -350,6 +362,25 @@
                         }
                         
                         /**
+                         * Indicate that the app is loaded and ready to go!
+                         * @method ready
+                         */
+                        FabMoDashboard.prototype.ready = function() {
+                        	this._call(&#x27;ready&#x27;);
+                        	this.isReady = true;
+                        }
+                        
+                        /**
+                         * Set the message to display while an app is loading.  You can call this any time before
+                         * calling the &#x60;ready()&#x60; function, to indicate loading or setup progress.
+                         * @method setBusy
+                         * @param {String} The message to display.
+                         */
+                        FabMoDashboard.prototype.setBusyMessage = function(message) {
+                        	this._call(&#x27;setBusyMessage&#x27;, {&#x27;message&#x27; : message});
+                        }
+                        
+                        /**
                          * If this app was invoked from another app, get the arguments (if any) that were passed on invocation.
                          *
                          * @method getAppArgs
@@ -409,6 +440,31 @@
                         }
                         
                         /**
+                         * Show the Dashboard Modal.
+                         *
+                         * @method showModal
+                         * @param {Object} [options] Options for modal content
+                         * @param {function} callback Called once the modal is shown.
+                         * @param {Error} callback.err Error object if there was an error.
+                         */
+                        FabMoDashboard.prototype.showModal = function(options, callback) {
+                            this._call(&quot;openModal&quot;, options, callback);
+                        }
+                        
+                        /**
+                         * Hide the Dashboard Modal.
+                         *
+                         * @method hideModal
+                         * @param {function} callback Called once the DRO has been hidden.
+                         * @param {Error} callback.err Error object if there was an error.
+                         */
+                        FabMoDashboard.prototype.hideModal = function(callback) {
+                            this._call(&quot;closeModal&quot;, null, callback);
+                        }
+                        
+                        
+                        
+                        /**
                          * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, 
                          * but the dashboard reserves the right to format or even suppress these messages as suits its needs.
                          *
@@ -421,6 +477,13 @@
                         FabMoDashboard.prototype.notify = function(type, message, callback) {
                         	this._call(&quot;notify&quot;, {&#x27;type&#x27;:type, &#x27;message&#x27;:message}, callback);
                         }
+                        
+                        
+                        // Notification functions
+                        FabMoDashboard.prototype.notification = function(type,message,callback) {
+                        	this._call(&quot;notification&quot;, {&#x27;type&#x27;:type,&#x27;message&#x27;:message}, callback);
+                        }
+                        FabMoDashboard.prototype.notify = FabMoDashboard.prototype.notification;
                         
                         function _makeFile(obj) {
                         	if(obj instanceof jQuery) {
@@ -781,6 +844,15 @@
                         	this._call(&quot;disableWifiHotspot&quot;, null, callback);
                         }
                         
+                        FabMoDashboard.prototype.getWifiNetworks = function(callback) {
+                        	this._call(&quot;getWifiNetworks&quot;, null, callback);
+                        }
+                        
+                        FabMoDashboard.prototype.getWifiNetworkHistory = function(callback) {
+                        	this._call(&quot;getWifiNetworkHistory&quot;, null, callback);
+                        }
+                        
+                        
                         /**
                          * Get a list of all the macros installed on the tool.
                          * 
@@ -898,7 +970,8 @@
                          * @param {String} options.target The link target (same as the target argument of &#x60;window.open&#x60;)
                          */
                         FabMoDashboard.prototype.navigate = function(url, options, callback) {
-                        	this._call(&quot;navigate&quot;, {&#x27;url&#x27; : url, &#x27;options&#x27; : options || {}}, callback);
+                        	var loc = window.location.href;
+                        	this._call(&quot;navigate&quot;, {&#x27;path&#x27; : loc.substr(0, loc.lastIndexOf(&#x27;/&#x27;)) + &#x27;/&#x27;, &#x27;url&#x27; : url, &#x27;options&#x27; : options || {}}, callback);
                         }
                         
                         var toaster = function () {
