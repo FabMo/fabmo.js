@@ -355,19 +355,30 @@ FabMoDashboard.prototype.hideDRO = function(callback) {
 	this._call("hideDRO", null, callback);
 }
 
-//Modal Functions 
+/**
+ * Show the Dashboard Modal.
+ *
+ * @method showModal
+ * @param {Object} [options] Options for modal content
+ * @param {function} callback Called once the modal is shown.
+ * @param {Error} callback.err Error object if there was an error.
+ */
 FabMoDashboard.prototype.showModal = function(options, callback) {
     this._call("openModal", options, callback);
 }
 
-FabMoDashboard.prototype.hideModal = function(options, callback) {
+/**
+ * Hide the Dashboard Modal.
+ *
+ * @method hideModal
+ * @param {function} callback Called once the DRO has been hidden.
+ * @param {Error} callback.err Error object if there was an error.
+ */
+FabMoDashboard.prototype.hideModal = function(callback) {
     this._call("closeModal", null, callback);
 }
 
-// Footer Functions
-FabMoDashboard.prototype.showFooter = function(callback) {
-	this._call("showFooter", null, callback);
-}
+
 
 /**
  * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, 
@@ -383,9 +394,6 @@ FabMoDashboard.prototype.notify = function(type, message, callback) {
 	this._call("notify", {'type':type, 'message':message}, callback);
 }
 
-FabMoDashboard.prototype.hideFooter = function(callback) {
-	this._call("hideFooter", null, callback);
-}
 
 // Notification functions
 FabMoDashboard.prototype.notification = function(type,message,callback) {
