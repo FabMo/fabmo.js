@@ -1,6 +1,6 @@
 {
   "name": "fabmo.js",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Javascript library for writing FabMo apps.",
   "main": "fabmo.js",
   "scripts": {
