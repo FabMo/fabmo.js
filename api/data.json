@@ -6,13 +6,6 @@
         "url": "https://github.com/FabMo/fabmo.js#readme"
     },
     "files": {
-        ".grunt/grunt-gh-pages/gh-pages/src/api/assets/vendor/bootstrap/js/bootstrap.min.js": {
-            "name": ".grunt/grunt-gh-pages/gh-pages/src/api/assets/vendor/bootstrap/js/bootstrap.min.js",
-            "modules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {}
-        },
         "yuidoc-fabmo-theme/assets/vendor/bootstrap/js/bootstrap.min.js": {
             "name": "yuidoc-fabmo-theme/assets/vendor/bootstrap/js/bootstrap.min.js",
             "modules": {},
@@ -72,12 +65,6 @@
     },
     "elements": {},
     "classitems": [
-        {
-            "file": ".grunt/grunt-gh-pages/gh-pages/src/api/assets/vendor/bootstrap/js/bootstrap.min.js",
-            "line": 1,
-            "description": "Bootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
-            "class": "FabMoDashboard"
-        },
         {
             "file": "yuidoc-fabmo-theme/assets/vendor/bootstrap/js/bootstrap.min.js",
             "line": 1,
@@ -286,9 +273,45 @@
             "params": [
                 {
                     "name": "options",
-                    "description": "Options for modal content",
+                    "description": "Options for modal content.",
                     "type": "Object",
-                    "optional": true
+                    "props": [
+                        {
+                            "name": "title",
+                            "description": "Displays large text for modal title.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "message",
+                            "description": "Displays small text for more detail.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "image",
+                            "description": "Relative path to image location to be displayed in modal.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "okText",
+                            "description": "Text displayed in affirmative button.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "cancelText",
+                            "description": "Text displayed in negative button.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "ok",
+                            "description": "Function executed on affirmative button click (default hideModal();).",
+                            "type": "Function"
+                        },
+                        {
+                            "name": "cancel",
+                            "description": "Function executed on negative button click (default hideModal();).",
+                            "type": "Function"
+                        }
+                    ]
                 },
                 {
                     "name": "callback",
@@ -308,14 +331,14 @@
         },
         {
             "file": "fabmo.js",
-            "line": 370,
+            "line": 377,
             "description": "Hide the Dashboard Modal.",
             "itemtype": "method",
             "name": "hideModal",
             "params": [
                 {
                     "name": "callback",
-                    "description": "Called once the DRO has been hidden.",
+                    "description": "Called once the modal is hidden.",
                     "type": "Function",
                     "props": [
                         {
@@ -331,7 +354,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 383,
+            "line": 390,
             "description": "Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, \nbut the dashboard reserves the right to format or even suppress these messages as suits its needs.",
             "itemtype": "method",
             "name": "notify",
@@ -364,7 +387,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 452,
+            "line": 459,
             "description": "Submit one or more jobs to the dashboard.",
             "params": [
                 {
@@ -387,7 +410,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 493,
+            "line": 500,
             "description": "Resubmit a job by its ID.  Resubmitted jobs come in at the back of the job queue.",
             "itemtype": "method",
             "name": "resubmitJob",
@@ -415,7 +438,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 505,
+            "line": 512,
             "description": "Cancel a job that is pending.",
             "itemtype": "method",
             "name": "cancelJob",
@@ -443,7 +466,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 517,
+            "line": 524,
             "description": "Get information about a job.  This works for jobs that are pending, currently running, or in the history.",
             "itemtype": "method",
             "name": "getJobInfo",
@@ -508,7 +531,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 536,
+            "line": 543,
             "description": "Get a list of jobs that are currently pending and running.",
             "itemtype": "method",
             "name": "getJobsInQueue",
@@ -548,7 +571,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 550,
+            "line": 557,
             "description": "Remove all pending jobs from the queue.",
             "itemtype": "method",
             "name": "clearJobQueue",
@@ -571,7 +594,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 561,
+            "line": 568,
             "description": "Get a list of jobs in the history.",
             "itemtype": "method",
             "name": "getJobHistory",
@@ -616,7 +639,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 576,
+            "line": 583,
             "description": "Run the next job in the job queue.",
             "itemtype": "method",
             "name": "runNext",
@@ -644,7 +667,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 588,
+            "line": 595,
             "description": "Pause the execution of the current job or operation.  Operation can be resumed.",
             "itemtype": "method",
             "name": "pause",
@@ -672,7 +695,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 600,
+            "line": 607,
             "description": "Stop execution of the current job or operation.  Operation cannot be resumed.",
             "itemtype": "method",
             "name": "stop",
@@ -700,7 +723,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 612,
+            "line": 619,
             "description": "Resume the current operation of the system is paused.",
             "itemtype": "method",
             "name": "resume",
@@ -728,7 +751,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 624,
+            "line": 631,
             "description": "Perform a fixed manual move in a single axis.  (Sometimes called a nudge)",
             "itemtype": "method",
             "name": "manualMoveFixed",
@@ -766,7 +789,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 638,
+            "line": 645,
             "description": "Start performing a manual move of the specified axis at the specified speed.",
             "itemtype": "method",
             "name": "manualStart",
@@ -787,7 +810,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 649,
+            "line": 656,
             "description": "Send a \"heartbeat\" to the system, authorizing continued manual movement.  Manual moves must be continually\nrefreshed with this heartbeat function, or the tool will stop moving.",
             "itemtype": "method",
             "name": "manualHeartbeat",
@@ -796,7 +819,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 659,
+            "line": 666,
             "description": "Stop the tool immediately.",
             "itemtype": "method",
             "name": "manualStop",
@@ -805,7 +828,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 668,
+            "line": 675,
             "description": "Get the list of all the installed apps.",
             "itemtype": "method",
             "name": "getApps",
@@ -833,7 +856,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 772,
+            "line": 779,
             "description": "Get a list of all the macros installed on the tool.",
             "itemtype": "method",
             "name": "getMacros",
@@ -860,7 +883,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 784,
+            "line": 791,
             "description": "Run the specified macro immediately.  Macro does not appear in the job history.",
             "itemtype": "method",
             "name": "runMacro",
@@ -887,7 +910,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 800,
+            "line": 807,
             "description": "Request a status report from the system.  The status object is returned in the callback to this function, as well as posted\nwith the status event.  To recieve updates to system status as it changes, you should bind a handler to the status event,\nand _not_ poll using `requestStatus`.",
             "itemtype": "method",
             "name": "requestStatus",
@@ -1017,7 +1040,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 838,
+            "line": 845,
             "description": "Get the configuration object for the currently running app.  The configuration object is a JSON object \nof no specific description that is saved with each app.  It can be used to store app-specific configuration data.",
             "itemtype": "method",
             "name": "getAppConfig",
@@ -1045,7 +1068,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 851,
+            "line": 858,
             "description": "Set the app configuration to the provided option.",
             "itemtype": "method",
             "name": "setAppConfig",
@@ -1078,7 +1101,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 864,
+            "line": 871,
             "description": "Get the current FabMo version",
             "itemtype": "method",
             "name": "getVersion",
@@ -1128,7 +1151,7 @@
         },
         {
             "file": "fabmo.js",
-            "line": 880,
+            "line": 887,
             "description": "Control top level navigation for the dashboard.  Usually this is used to open another browser/tab window with a link from within an app,\nor more rarely, to navigate away from the dashboard.",
             "itemtype": "method",
             "name": "navigate",
@@ -1162,10 +1185,6 @@
         },
         {
             "message": "Missing item type\nBootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
-            "line": " .grunt/grunt-gh-pages/gh-pages/src/api/assets/vendor/bootstrap/js/bootstrap.min.js:1"
-        },
-        {
-            "message": "Missing item type\nBootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
             "line": " yuidoc-fabmo-theme/assets/vendor/bootstrap/js/bootstrap.min.js:1"
         },
         {
@@ -1174,7 +1193,7 @@
         },
         {
             "message": "Missing item type\nSubmit one or more jobs to the dashboard.",
-            "line": " fabmo.js:452"
+            "line": " fabmo.js:459"
         }
     ]
 }

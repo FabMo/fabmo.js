@@ -443,7 +443,14 @@
                          * Show the Dashboard Modal.
                          *
                          * @method showModal
-                         * @param {Object} [options] Options for modal content
+                         * @param {Object} options Options for modal content.
+                         * @param {String} options.title Displays large text for modal title.
+                         * @param {String} options.message Displays small text for more detail.
+                         * @param {String} options.image Relative path to image location to be displayed in modal.
+                         * @param {String} options.okText Text displayed in affirmative button.
+                         * @param {String} options.cancelText Text displayed in negative button.
+                         * @param {function} options.ok Function executed on affirmative button click (default hideModal();).
+                         * @param {function} options.cancel Function executed on negative button click (default hideModal();).
                          * @param {function} callback Called once the modal is shown.
                          * @param {Error} callback.err Error object if there was an error.
                          */
@@ -455,7 +462,7 @@
                          * Hide the Dashboard Modal.
                          *
                          * @method hideModal
-                         * @param {function} callback Called once the DRO has been hidden.
+                         * @param {function} callback Called once the modal is hidden.
                          * @param {Error} callback.err Error object if there was an error.
                          */
                         FabMoDashboard.prototype.hideModal = function(callback) {
