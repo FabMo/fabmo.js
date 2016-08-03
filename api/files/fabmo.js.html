@@ -24,7 +24,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.2</b>
+                    API Docs for Version: <b>v1.1.1</b>
                 </p>
             </li>
         </div>
@@ -101,10 +101,10 @@
                         
                         /**
                          * The top-level object representing the dashboard.
-                         * 
+                         *
                          * @class FabMoDashboard
                          */
-                        var FabMoDashboard = function() {
+                        var FabMoDashboard = function(options) {
                             this.version = &#x27;{{FABMO_VERSION}}&#x27;;
                         	this.target = window.parent;
                         	this.window = window;
@@ -117,7 +117,10 @@
                         		&#x27;status&#x27; : [],
                         		&#x27;job_start&#x27; : [],
                         		&#x27;job_end&#x27; : [],
-                        		&#x27;change&#x27; : []
+                        		&#x27;change&#x27; : [],
+                        		&#x27;disconnect&#x27; : [],
+                        		&#x27;reconnect&#x27; : [],
+                            	&#x27;video_frame&#x27; : [],
                         	};
                         	this._setupMessageListener();
                             // listen for escape key press to quit the engine
@@ -154,7 +157,7 @@
                         FabMoDashboard.prototype._download = function(data, strFileName, strMimeType) {
                         	// https://github.com/rndme/download
                         	// data can be a string, Blob, File, or dataURL
-                        	
+                        
                         	var self = window 						// this script is only for browsers anyway...
                         	var u = &quot;application/octet-stream&quot; 		// this default mime also triggers iframe downloads
                         	var m = strMimeType || u;
@@ -167,7 +170,7 @@
                         	var fn = strFileName || &quot;download&quot;;
                         	var blob;
                         	var fr;
-                        	
+                        
                         	blob = x instanceof B ? x : new B([x], {type: m}) ;
                         
                         	function d2b(u) {
@@ -181,10 +184,10 @@
                         		for(i;i&lt;mx;++i) { uia[i]=bin.charCodeAt(i); }
                         		return new B([uia], {type: t});
                         	 }
-                        	  
+                        
                         	function saver(url, winMode){
-                        		
-                        		if (&#x27;download&#x27; in a) { //html5 A[download] 			
+                        
+                        		if (&#x27;download&#x27; in a) { //html5 A[download]
                         			a.href = url;
                         			a.setAttribute(&quot;download&quot;, fn);
                         			a.innerHTML = &quot;downloading...&quot;;
@@ -199,47 +202,47 @@
                         
                         		if(typeof safari !==&quot;undefined&quot; ){ // handle non-a[download] safari as best we can:
                         			url=&quot;data:&quot;+url.replace(/^data:([\w\/\-\+]+)/, u);
-                        			if(!window.open(url)){ // popup blocked, offer direct download: 
+                        			if(!window.open(url)){ // popup blocked, offer direct download:
                         				if(confirm(&quot;Displaying New Document\n\nUse Save As... to download, then click back to return to this page.&quot;)){ location.href=url; }
                         			}
                         			return true;
                         		}
-                        		
+                        
                         		//do iframe dataURL download (old ch+FF):
                         		var f = D.createElement(&quot;iframe&quot;);
                         		D.body.appendChild(f);
-                        		
+                        
                         		if(!winMode){ // force a mime that will download:
                         			url=&quot;data:&quot;+url.replace(/^data:([\w\/\-\+]+)/, u);
                         		}
                         		f.src=url;
                         		setTimeout(function(){ D.body.removeChild(f); }, 333);
-                        		
-                        	}//end saver 
-                        	
+                        
+                        	}//end saver
+                        
                         	if (navigator.msSaveBlob) { // IE10+ : (has Blob, but not a[download] or URL)
                         		return navigator.msSaveBlob(blob, fn);
-                        	} 	
-                        	
+                        	}
+                        
                         	if(self.URL){ // simple fast and modern way using Blob and URL:
                         		saver(self.URL.createObjectURL(blob), true);
                         	}else{
                         		// handle non-Blob()+non-URL browsers:
                         		if(typeof blob === &quot;string&quot; || blob.constructor===z ){
                         			try{
-                        				return saver( &quot;data:&quot; +  m   + &quot;;base64,&quot;  +  self.btoa(blob)  ); 
+                        				return saver( &quot;data:&quot; +  m   + &quot;;base64,&quot;  +  self.btoa(blob)  );
                         			}catch(y){
-                        				return saver( &quot;data:&quot; +  m   + &quot;,&quot; + encodeURIComponent(blob)  ); 
+                        				return saver( &quot;data:&quot; +  m   + &quot;,&quot; + encodeURIComponent(blob)  );
                         			}
                         		}
-                        		
+                        
                         		// Blob but not URL:
                         		fr=new FileReader();
                         		fr.onload=function(e){
-                        			saver(this.result); 
+                        			saver(this.result);
                         		};
                         		fr.readAsDataURL(blob);
-                        	}	
+                        	}
                         	return true;
                         } // _download
                         
@@ -253,7 +256,7 @@
                         		}
                         		this.target.postMessage(message, &#x27;*&#x27;);
                         	} else {
-                        		//console.debug(&quot;Simulating &quot; + name + &quot; with &quot; + JSON.stringify(data));		
+                        		//console.debug(&quot;Simulating &quot; + name + &quot; with &quot; + JSON.stringify(data));
                         		this._simulateCall(name, data, callback);
                         	}
                         }
@@ -262,9 +265,8 @@
                             toaster();
                             var toast = document.getElementById(&#x27;alert-toaster&#x27;);
                             var text = document.getElementById(&#x27;alert-text&#x27;);
-                            console.log(text);
                         	switch(name) {
-                                
+                        
                         		case &quot;submitJob&quot;:
                         			var files = [];
                         			data.jobs.forEach(function(job) {
@@ -280,7 +282,7 @@
                         				var msg = data.jobs.length + &quot; Jobs Submitted: &quot; + files.join(&#x27;,&#x27;);
                         			}
                         			text.textContent = msg;
-                        			showToaster(toast);			
+                        			showToaster(toast);
                         		break;
                         
                         		case &quot;runGCode&quot;:
@@ -302,7 +304,7 @@
                         			text.textContent = &quot;DRO Hidden.&quot;;
                         			showToaster(toaster);
                         		break;
-                        		
+                        
                         		default:
                         			text.textContent = name + &quot; called.&quot;;
                         			showToaster(toast);
@@ -320,7 +322,7 @@
                         
                         /**
                          * Bind a callback to the specified event.
-                         * 
+                         *
                          * @method on
                          * @param {String} name Event name
                          * @param {function} callback Event handler
@@ -385,7 +387,7 @@
                          *
                          * @method getAppArgs
                          * @callback {Object} The arguments passed to this app, or undefined.
-                         */ 
+                         */
                         FabMoDashboard.prototype.getAppArgs = function(callback) {
                         	this._call(&quot;getAppArgs&quot;, null, callback);
                         }
@@ -405,7 +407,7 @@
                         
                         /**
                          * Launch the specified app by app ID, with optional arguments.
-                         * 
+                         *
                          * @method launchApp
                          * @param {String} id The id of the app to launch.
                          * @param {Object} args Arguments object to pass to the app.
@@ -439,40 +441,42 @@
                         	this._call(&quot;hideDRO&quot;, null, callback);
                         }
                         
-                        /**
-                         * Show the Dashboard Modal.
-                         *
-                         * @method showModal
-                         * @param {Object} options Options for modal content.
-                         * @param {String} options.title Displays large text for modal title.
-                         * @param {String} options.message Displays small text for more detail.
-                         * @param {String} options.image Relative path to image location to be displayed in modal.
-                         * @param {String} options.okText Text displayed in affirmative button.
-                         * @param {String} options.cancelText Text displayed in negative button.
-                         * @param {function} options.ok Function executed on affirmative button click (default hideModal();).
-                         * @param {function} options.cancel Function executed on negative button click (default hideModal();).
-                         * @param {function} callback Called once the modal is shown.
-                         * @param {Error} callback.err Error object if there was an error.
-                         */
+                        //Modal Functions
                         FabMoDashboard.prototype.showModal = function(options, callback) {
-                            this._call(&quot;openModal&quot;, options, callback);
+                        	var callbacks = {
+                        		&quot;ok&quot; : options.ok,
+                        		&quot;cancel&quot; : options.cancel
+                        	}
+                        	var showModalCallback = function(err, buttonPressed) {
+                        		if(err) {
+                        			callback(err);
+                        		}
+                        		var f = callbacks[buttonPressed]();
+                        		if(f) {
+                        			f();
+                        		} else {
+                        			if(callback) {
+                        				callback();
+                        			}
+                        		}
+                         	}
+                         	options.ok = options.ok ? true : false;
+                         	options.cancel = options.cancel ? true : false;
+                        
+                            this._call(&quot;openModal&quot;, options, showModalCallback);
                         }
                         
-                        /**
-                         * Hide the Dashboard Modal.
-                         *
-                         * @method hideModal
-                         * @param {function} callback Called once the modal is hidden.
-                         * @param {Error} callback.err Error object if there was an error.
-                         */
-                        FabMoDashboard.prototype.hideModal = function(callback) {
+                        FabMoDashboard.prototype.hideModal = function(options, callback) {
                             this._call(&quot;closeModal&quot;, null, callback);
                         }
                         
-                        
+                        // Footer Functions
+                        // FabMoDashboard.prototype.showFooter = function(callback) {
+                        // 	this._call(&quot;showFooter&quot;, null, callback);
+                        // }
                         
                         /**
-                         * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard, 
+                         * Show a notification on the dashboard.  Notifications typically show up as toaster message somewhere on the dashboard,
                          * but the dashboard reserves the right to format or even suppress these messages as suits its needs.
                          *
                          * @method notify
@@ -485,6 +489,9 @@
                         	this._call(&quot;notify&quot;, {&#x27;type&#x27;:type, &#x27;message&#x27;:message}, callback);
                         }
                         
+                        FabMoDashboard.prototype.hideFooter = function(callback) {
+                        	this._call(&quot;hideFooter&quot;, null, callback);
+                        }
                         
                         // Notification functions
                         FabMoDashboard.prototype.notification = function(type,message,callback) {
@@ -571,7 +578,7 @@
                         	for(var i=0; i&lt;jobs.length; i++) {
                         		args.jobs.push(_makeJob(jobs[i]));
                         	}
-                        	
+                        
                         	if(typeof options === &#x27;function&#x27;) {
                         		callback = options;
                         		options = {};
@@ -581,9 +588,13 @@
                         	this._call(&quot;submitJob&quot;, args, callback)
                         }
                         
+                        FabMoDashboard.prototype.updateOrder = function(data, callback) {
+                        	this._call(&quot;updateOrder&quot;, data, callback);
+                        }
+                        
                         /**
                          * Resubmit a job by its ID.  Resubmitted jobs come in at the back of the job queue.
-                         * 
+                         *
                          * @method resubmitJob
                          * @param {Number} id The ID of the job to resubmit
                          * @param {function} callback
@@ -594,20 +605,22 @@
                         }
                         
                         /**
-                         * Cancel a job that is pending.
-                         * 
-                         * @method cancelJob
-                         * @param {Number} id The ID of the job to cancel
+                         * Delete a job (cancels if running, sends to trash otherwise.)
+                         *
+                         * @method deleteJob
+                         * @param {Number} id The ID of the job to delete
                          * @param {function} callback
                          * @param {Error} callback.err Error object if there was an error.
                          */
-                        FabMoDashboard.prototype.cancelJob = function(id, callback) {
-                        	this._call(&quot;cancelJob&quot;, id, callback)
+                        FabMoDashboard.prototype.deleteJob = function(id, callback) {
+                        	this._call(&quot;deleteJob&quot;, id, callback)
                         }
+                        
+                        FabMoDashboard.prototype.cancelJob = FabMoDashboard.prototype.cancelJob;
                         
                         /**
                          * Get information about a job.  This works for jobs that are pending, currently running, or in the history.
-                         * 
+                         *
                          * @method getJobInfo
                          * @param {Number} id The ID of the job to cancel
                          * @param {function} callback
@@ -626,7 +639,7 @@
                         
                         /**
                          * Get a list of jobs that are currently pending and running.
-                         * 
+                         *
                          * @method getJobsInQueue
                          * @param {function} callback
                          * @param {Error} callback.err Error object if there was an error.
@@ -640,7 +653,7 @@
                         
                         /**
                          * Remove all pending jobs from the queue.
-                         * 
+                         *
                          * @method clearJobQueue
                          * @param {function} callback
                          * @param {Error} callback.err Error object if there was an error.
@@ -651,7 +664,7 @@
                         
                         /**
                          * Get a list of jobs in the history.
-                         * 
+                         *
                          * @method getJobHistory
                          * @param {Object} options
                          * @param {Number} options.start The location in the results to start
@@ -666,7 +679,7 @@
                         
                         /**
                          * Run the next job in the job queue.
-                         * 
+                         *
                          * @method runNext
                          * @param {Object} options
                          * @param {function} callback
@@ -678,7 +691,7 @@
                         
                         /**
                          * Pause the execution of the current job or operation.  Operation can be resumed.
-                         * 
+                         *
                          * @method pause
                          * @param {Object} options
                          * @param {function} callback
@@ -690,7 +703,7 @@
                         
                         /**
                          * Stop execution of the current job or operation.  Operation cannot be resumed.
-                         * 
+                         *
                          * @method stop
                          * @param {Object} options
                          * @param {function} callback
@@ -702,7 +715,7 @@
                         
                         /**
                          * Resume the current operation of the system is paused.
-                         * 
+                         *
                          * @method resume
                          * @param {Object} options
                          * @param {function} callback
@@ -714,7 +727,7 @@
                         
                         /**
                          * Perform a fixed manual move in a single axis.  (Sometimes called a nudge)
-                         * 
+                         *
                          * @method manualMoveFixed
                          * @param {String} axis One of &#x60;x&#x60;,&#x60;y&#x60;,&#x60;z&#x60;,&#x60;a&#x60;,&#x60;b&#x60;,&#x60;c&#x60;
                          * @param {Number} speed Speed in current tool units
@@ -728,7 +741,7 @@
                         
                         /**
                          * Start performing a manual move of the specified axis at the specified speed.
-                         * 
+                         *
                          * @method manualStart
                          * @param {Number} axis One of &#x60;x&#x60;,&#x60;y&#x60;,&#x60;z&#x60;,&#x60;a&#x60;,&#x60;b&#x60;,&#x60;c&#x60;
                          * @param {Number} speed Speed in current tool units.  Negative to move in the negative direction.
@@ -740,7 +753,7 @@
                         /**
                          * Send a &quot;heartbeat&quot; to the system, authorizing continued manual movement.  Manual moves must be continually
                          * refreshed with this heartbeat function, or the tool will stop moving.
-                         * 
+                         *
                          * @method manualHeartbeat
                          */
                         FabMoDashboard.prototype.manualHeartbeat = function() {
@@ -749,7 +762,7 @@
                         
                         /**
                          * Stop the tool immediately.
-                         * 
+                         *
                          * @method manualStop
                          */
                         FabMoDashboard.prototype.manualStop = function() {
@@ -793,7 +806,7 @@
                         	for(var i=0; i&lt;apps.length; i++) {
                         		args.apps.push(_makeApp(apps[i]));
                         	}
-                        	
+                        
                         	if(typeof options === &#x27;function&#x27;) {
                         		callback = options;
                         		options = {};
@@ -815,10 +828,25 @@
                         	this._call(&quot;deleteApp&quot;,id,callback);
                         }
                         
+                        /**
+                         * Run the provided G-Code string immediately. Multiline strings are accepted.
+                         * @method runGCode
+                         * @param {String} text The G-Code command(s) to run.
+                         * @param {function} callback
+                         * @param {Error} callback.err Error object if there was an error.
+                         */
+                        
                         FabMoDashboard.prototype.runGCode = function(text, callback) {
                         	this._call(&quot;runGCode&quot;, text, callback);
                         }
                         
+                        /**
+                         * Run the provided OpenSBP string immediately. Multiline strings are accepted.
+                         * @method runSBP
+                         * @param {String} text The OpenSBP command(s) to run.
+                         * @param {function} callback
+                         * @param {Error} callback.err Error object if there was an error.
+                         */
                         FabMoDashboard.prototype.runSBP = function(text, callback) {
                         	this._call(&quot;runSBP&quot;, text, callback);
                         }
@@ -859,10 +887,21 @@
                         	this._call(&quot;getWifiNetworkHistory&quot;, null, callback);
                         }
                         
+                        FabMoDashboard.prototype.getNetworkIdentity = function(callback) {
+                        	this._call(&quot;getNetworkIdentity&quot;, null, callback);
+                        }
+                        
+                        FabMoDashboard.prototype.setNetworkIdentity = function(identity, callback) {
+                        	this._call(&quot;setNetworkIdentity&quot;, identity, callback);
+                        }
+                        
+                        FabMoDashboard.prototype.isOnline = function(callback) {
+                        	this._call(&quot;isOnline&quot;, null, callback);
+                        }
                         
                         /**
                          * Get a list of all the macros installed on the tool.
-                         * 
+                         *
                          * @method getMacros
                          * @param callback
                          * @param {Error} callback.err Error object if there was an error.
@@ -874,7 +913,7 @@
                         
                         /**
                          * Run the specified macro immediately.  Macro does not appear in the job history.
-                         * 
+                         *
                          * @method runMacro
                          * @param {Number} id The id of the macro to run.
                          * @param callback
@@ -892,7 +931,7 @@
                          * Request a status report from the system.  The status object is returned in the callback to this function, as well as posted
                          * with the status event.  To recieve updates to system status as it changes, you should bind a handler to the status event,
                          * and _not_ poll using &#x60;requestStatus&#x60;.
-                         * 
+                         *
                          * @method requestStatus
                          * @param {function} callback
                          * @param {Object} callback.status The status report object
@@ -916,18 +955,48 @@
                          * @param {Number} callback.status.nb_lines The total number of lines in the currently running file (if a file is running)
                          * @param {boolean} callback.status.auth True if the tool is currently authorized for movement
                          * @param {Object} callback.status.current_file Object describing the currently running file (or null if not running a file)
-                         * @param {Object} callback.status.job Object describing the currently running job (or null if not running a job) 
+                         * @param {Object} callback.status.job Object describing the currently running job (or null if not running a job)
                          */
                         FabMoDashboard.prototype.requestStatus = function(callback) {
                         	this._call(&quot;requestStatus&quot;, null, callback);
                         }
+                        
+                        /**
+                         * Start a connection to the video streaming service on your fabmo device.
+                         * A video_frame event will be triggered each time a new frame is send to the browser.
+                         *
+                         * @method startVideoStreaming
+                         * @param {function} callback
+                         * @param {Object} callback.err Error object if there was an error.
+                         */
+                        FabMoDashboard.prototype.startVideoStreaming = function(callback) {
+                        	this._call(&quot;startVideoStreaming&quot;, null, callback);
+                        }
+                        
+                        
+                        /**
+                         * Add a listener to the video frame event.
+                         * This will return an Image object, ready to be displayed on a canvas
+                         * @method startVideoStreaming
+                         * @param {function} callback
+                         * @param {Object} callback.err Error object if there was an error.
+                         */
+                        FabMoDashboard.prototype.onVideoFrame = function (callback) {
+                          this.on(&#x27;video_frame&#x27;,function(data){
+                            imageObj = new Image();
+                            imageObj.src = &quot;data:image/jpeg;base64,&quot;+data;
+                            imageObj.onload = function(){
+                              callback(imageObj);
+                            }
+                          })
+                        };
                         
                         FabMoDashboard.prototype.deleteMacro = function(id, callback) {
                         	this._call(&quot;deleteMacro&quot;, id, callback);
                         }
                         
                         /**
-                         * Get the configuration object for the currently running app.  The configuration object is a JSON object 
+                         * Get the configuration object for the currently running app.  The configuration object is a JSON object
                          * of no specific description that is saved with each app.  It can be used to store app-specific configuration data.
                          *
                          * @method getAppConfig
@@ -954,7 +1023,7 @@
                         
                         /**
                          * Get the current FabMo version
-                         * 
+                         *
                          * @method getVersion
                          * @param {fuction} callback
                          * @param {Error} callback.err Error object if there was an error.
@@ -981,13 +1050,29 @@
                         	this._call(&quot;navigate&quot;, {&#x27;path&#x27; : loc.substr(0, loc.lastIndexOf(&#x27;/&#x27;)) + &#x27;/&#x27;, &#x27;url&#x27; : url, &#x27;options&#x27; : options || {}}, callback);
                         }
                         
+                        FabMoDashboard.prototype.getCurrentUser = function(callback){
+                          this._call(&quot;getCurrentUser&quot;,null,callback);
+                        }
+                        FabMoDashboard.prototype.addUser = function(user_info,callback){
+                          this._call(&quot;addUser&quot;,user_info,callback);
+                        }
+                        FabMoDashboard.prototype.modifyUser = function(user,callback){
+                          this._call(&quot;modifyUser&quot;,user,callback);
+                        }
+                        FabMoDashboard.prototype.deleteUser = function(user,callback){
+                          this._call(&quot;deleteUser&quot;,user,callback);
+                        }
+                        FabMoDashboard.prototype.getUsers = function(callback){
+                          this._call(&quot;getUsers&quot;,null,callback);
+                        }
+                        
+                        
                         var toaster = function () {
                         	var el = document.createElement(&#x27;div&#x27;);
                             el.setAttribute(&#x27;id&#x27;, &#x27;alert-toaster&#x27;);
                             el.style.cssText = &#x27;position:fixed; visibility:hidden; margin: auto; top: 20px; right: 20px; width: 250px; height: 60px; background-color: #F3F3F3; border-radius: 3px; z-index: 1005; box-shadow: 4px 4px 7px -2px rgba(0,0,0,0.75);&#x27;;
                             el.innerHTML = &quot;&lt;span id=&#x27;alert-text&#x27; style= &#x27;position:absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 20px; width: 250px; text-align: center;&#x27;&gt;&lt;/span&gt;&quot;;
                         	document.body.appendChild(el);
-                            console.log(el);
                         }
                         var showToaster = function (toaster) {
                             toaster.style.visibility = &#x27;visible&#x27;;
